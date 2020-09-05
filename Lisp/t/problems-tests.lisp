@@ -27,3 +27,6 @@
   (assert-equal 1 (nn:my-last2 '(5 4 3 2 1)))
   (assert-equal 1 (nn:my-last3 '(5 4 3 2 1)))
   (assert-equal 1 (nn:my-last4 '(5 4 3 2 1))))
+
+(define-test test-but-last
+  (assert-equal 2 (nn:but-last '(5 4 3 2 1))))

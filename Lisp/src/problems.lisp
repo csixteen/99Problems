@@ -45,3 +45,12 @@
 (defun my-last4 (lst)
   (let ((len (length lst)))
     (nth (1- len) lst)))
+
+
+;; Problem 2 - find the but last element in a list
+
+(defun but-last (lst)
+  (if (< (length lst) 2)
+    (error "List must have at least 2 elements")
+    (cadr (reverse lst))))
+

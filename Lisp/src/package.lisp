@@ -24,4 +24,5 @@
   (:export :my-last
            :my-last2
            :my-last3
-           :my-last4))
+           :my-last4
+           :but-last))

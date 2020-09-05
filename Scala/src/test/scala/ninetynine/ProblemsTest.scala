@@ -11,4 +11,16 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.myLast3(List(5, 4, 3, 2, 1)) === Some(1))
     assert(Problems.myLast3(List()) === None)
   }
+
+  test("Problem 2 - butLast") {
+    assert(Problems.butLast(List()) === None)
+    assert(Problems.butLast(List(5, 4, 3, 2, 1)) === Some(2))
+    assert(Problems.butLast(List(1, 2)) === Some(1))
+    assert(Problems.butLast2(List()) === None)
+    assert(Problems.butLast2(List(5, 4, 3, 2, 1)) === Some(2))
+    assert(Problems.butLast2(List(1, 2)) === Some(1))
+    assert(Problems.butLast3(List()) === None)
+    assert(Problems.butLast3(List(5, 4, 3, 2, 1)) === Some(2))
+    assert(Problems.butLast3(List(1, 2)) === Some(1))
+  }
 }
