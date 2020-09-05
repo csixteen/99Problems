@@ -1,2 +1,2 @@
 # 99Problems
-99 Problems
+My functional programming playground.
