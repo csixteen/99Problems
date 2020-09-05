@@ -1,0 +1,12 @@
+*.class
+target/
+
+*.fasl
+*.FASL
+*.lisp-temp
+*.dfsl
+
+.*.swp
+*~
+
+bin/
