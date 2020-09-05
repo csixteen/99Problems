@@ -1,4 +1,0 @@
-[0m[[0m[31merror[0m] [0m[0m/Users/pmpro/Code/Repositories/99Problems/Scala/src/main/scala/ninetynine/Problems.scala:21:26: Option[A] does not take parameters[0m
-[0m[[0m[31merror[0m] [0m[0m    as.reverse.headOption()[0m
-[0m[[0m[31merror[0m] [0m[0m                         ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
