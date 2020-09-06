@@ -54,3 +54,10 @@
     (error "List must have at least 2 elements")
     (cadr (reverse lst))))
 
+
+;; Problem 3 - find the kth element of a list
+
+(defun element-at (lst n)
+  (cond ((null lst) (error "Not enough elements"))
+        ((= n 1) (car lst))
+        (t (element-at (cdr lst) (1- n)))))

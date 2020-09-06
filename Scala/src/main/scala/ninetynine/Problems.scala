@@ -34,4 +34,15 @@ object Problems {
 
   def butLast3[A](as: List[A]): Option[A] =
     Try(as.init.lastOption).getOrElse(None: Option[A])
+
+  /** Problem 3 - find the kth element of a list (starting from 1) */
+  def elementAt[A](as: List[A], n: Int): Option[A] =
+    as match {
+      case List(x, _) if n == 1 => Some(x)
+      case h :: t if n > 1 => elementAt(t, n-1)
+      case _ => None
+    }
+
+  def elementAt2[A](as: List[A], n: Int): Option[A] =
+    as.drop(n-1).headOption
 }

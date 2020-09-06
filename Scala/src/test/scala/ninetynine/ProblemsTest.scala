@@ -23,4 +23,11 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.butLast3(List(5, 4, 3, 2, 1)) === Some(2))
     assert(Problems.butLast3(List(1, 2)) === Some(1))
   }
+
+  test("Problem 3 - elementAt") {
+    assert(Problems.elementAt(List(5, 4, 3, 2, 1), 4) == Some(2))
+    assert(Problems.elementAt(List(), 2) == None)
+    assert(Problems.elementAt2(List(5, 4, 3, 2, 1), 4) == Some(2))
+    assert(Problems.elementAt2(List(), 2) == None)
+  }
 }

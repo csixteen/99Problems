@@ -30,3 +30,7 @@
 
 (define-test test-but-last
   (assert-equal 2 (nn:but-last '(5 4 3 2 1))))
+
+(define-test test-element-at
+  (assert-error 'error (nn:element-at '() 3))
+  (assert-equal 2 (nn:element-at '(5 4 3 2 1) 4)))
