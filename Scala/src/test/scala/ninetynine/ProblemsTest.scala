@@ -25,9 +25,16 @@ class ProblemsTest extends AnyFunSuite {
   }
 
   test("Problem 3 - elementAt") {
-    assert(Problems.elementAt(List(5, 4, 3, 2, 1), 4) == Some(2))
-    assert(Problems.elementAt(List(), 2) == None)
-    assert(Problems.elementAt2(List(5, 4, 3, 2, 1), 4) == Some(2))
-    assert(Problems.elementAt2(List(), 2) == None)
+    assert(Problems.elementAt(List(5, 4, 3, 2, 1), 4) === Some(2))
+    assert(Problems.elementAt(List(), 2) === None)
+    assert(Problems.elementAt2(List(5, 4, 3, 2, 1), 4) === Some(2))
+    assert(Problems.elementAt2(List(), 2) === None)
+  }
+
+  test("Problem 4 - myLength") {
+    assert(Problems.myLength(List()) === 0)
+    assert(Problems.myLength(List(1, 2, 3, 4, 5)) === 5)
+    assert(Problems.myLength2(List()) === 0)
+    assert(Problems.myLength2(List(1, 2, 3, 4, 5)) === 5)
   }
 }

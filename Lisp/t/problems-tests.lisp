@@ -34,3 +34,7 @@
 (define-test test-element-at
   (assert-error 'error (nn:element-at '() 3))
   (assert-equal 2 (nn:element-at '(5 4 3 2 1) 4)))
+
+(define-test test-my-length
+  (assert-equal 0 (nn:my-length '()))
+  (assert-equal 5 (nn:my-length '(1 2 3 4 5))))

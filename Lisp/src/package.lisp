@@ -26,4 +26,5 @@
            :my-last3
            :my-last4
            :but-last
-           :element-at))
+           :element-at
+           :my-length))

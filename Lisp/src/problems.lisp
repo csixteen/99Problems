@@ -61,3 +61,9 @@
   (cond ((null lst) (error "Not enough elements"))
         ((= n 1) (car lst))
         (t (element-at (cdr lst) (1- n)))))
+
+
+;; Problem 4 - find the number of elements in a list
+
+(defun my-length (lst)
+  (reduce #'(lambda (x y) (1+ x)) lst :initial-value 0))

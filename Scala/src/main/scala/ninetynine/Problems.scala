@@ -45,4 +45,19 @@ object Problems {
 
   def elementAt2[A](as: List[A], n: Int): Option[A] =
     as.drop(n-1).headOption
+
+  /** Problem 4 - find the number of elements in a list */
+  def myLength[A](as: List[A]): Int = {
+    @annotation.tailrec
+    def go[A](xs: List[A], acc: Int): Int =
+      xs match {
+        case List() => acc
+        case _ :: t => go(t, acc + 1)
+      }
+
+    go(as, 0)
+  }
+
+  def myLength2[A](as: List[A]): Int =
+    as.foldLeft(0)((acc, _) => acc + 1)
 }
