@@ -4,8 +4,10 @@ import scala.util.Try
 
 
 object Problems {
-  //---------------------------------------------
-  // Lists
+  ////****************************************************
+  ////
+  ////                   Lists
+
 
   /** Problem 1 - find the last element of a list */
   def myLast[A](as: List[A]): Option[A] =
@@ -66,6 +68,8 @@ object Problems {
 
   def myLength2[A](as: List[A]): Int =
     as.foldLeft(0)((acc, _) => acc + 1)
+
+  //-------------------------------------------------------
 
   /** Problem 5 - reverse a list */
   def myReverse[A](as: List[A]): List[A] = {
