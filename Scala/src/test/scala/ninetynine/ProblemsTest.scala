@@ -37,4 +37,11 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.myLength2(List()) === 0)
     assert(Problems.myLength2(List(1, 2, 3, 4, 5)) === 5)
   }
+
+  test("Problem 5 - myReverse") {
+    assert(Problems.myReverse(List()) === List())
+    assert(Problems.myReverse(List(1, 2, 3, 4, 5)) === List(5, 4, 3, 2, 1))
+    assert(Problems.myReverse2(List()) === List())
+    assert(Problems.myReverse2(List(1, 2, 3, 4, 5)) === List(5, 4, 3, 2, 1))
+  }
 }

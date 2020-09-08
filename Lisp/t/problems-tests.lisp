@@ -38,3 +38,9 @@
 (define-test test-my-length
   (assert-equal 0 (nn:my-length '()))
   (assert-equal 5 (nn:my-length '(1 2 3 4 5))))
+
+(define-test test-my-reverse
+  (assert-equal nil (nn:my-reverse nil))
+  (assert-equal '(5 4 3 2 1) (nn:my-reverse '(1 2 3 4 5)))
+  (assert-equal nil (nn:my-reverse2 nil))
+  (assert-equal '(5 4 3 2 1) (nn:my-reverse2 '(1 2 3 4 5))))

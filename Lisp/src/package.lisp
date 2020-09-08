@@ -27,4 +27,6 @@
            :my-last4
            :but-last
            :element-at
-           :my-length))
+           :my-length
+           :my-reverse
+           :my-reverse2))

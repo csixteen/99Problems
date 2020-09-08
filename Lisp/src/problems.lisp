@@ -67,3 +67,18 @@
 
 (defun my-length (lst)
   (reduce #'(lambda (x y) (1+ x)) lst :initial-value 0))
+
+
+;; Problem 5 - reverse a list
+
+(defun my-reverse (lst)
+  (labels ((rev (xs acc)
+                (cond ((null xs) acc)
+                      (t (rev (cdr xs) (cons (car xs) acc))))))
+    (rev lst nil)))
+
+(defun flip (f)
+  (lambda (x y) (funcall f y x)))
+
+(defun my-reverse2 (lst)
+  (reduce (flip #'cons) lst :initial-value nil))

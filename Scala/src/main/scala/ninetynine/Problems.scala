@@ -21,6 +21,8 @@ object Problems {
   def myLast3[A](as: List[A]): Option[A] =
     as.reverse.headOption
 
+  //------------------------------------------------------
+
   /** Problem 2 - find the but last element in a list */
   def butLast[A](as: List[A]): Option[A] =
     as match {
@@ -35,6 +37,8 @@ object Problems {
   def butLast3[A](as: List[A]): Option[A] =
     Try(as.init.lastOption).getOrElse(None: Option[A])
 
+  //------------------------------------------------------
+
   /** Problem 3 - find the kth element of a list (starting from 1) */
   def elementAt[A](as: List[A], n: Int): Option[A] =
     as match {
@@ -46,6 +50,8 @@ object Problems {
   def elementAt2[A](as: List[A], n: Int): Option[A] =
     as.drop(n-1).headOption
 
+  //------------------------------------------------------
+  
   /** Problem 4 - find the number of elements in a list */
   def myLength[A](as: List[A]): Int = {
     @annotation.tailrec
@@ -60,4 +66,19 @@ object Problems {
 
   def myLength2[A](as: List[A]): Int =
     as.foldLeft(0)((acc, _) => acc + 1)
+
+  /** Problem 5 - reverse a list */
+  def myReverse[A](as: List[A]): List[A] = {
+    @annotation.tailrec
+    def go(xs: List[A], acc: List[A]): List[A] =
+      xs match {
+        case List() => acc
+        case h :: t => go(t, h :: acc)
+      }
+
+    go(as, List())
+  }
+
+  def myReverse2[A](as: List[A]): List[A] =
+    as.foldLeft(List[A]())((b, a) => a :: b)
 }
