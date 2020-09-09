@@ -85,4 +85,10 @@ object Problems {
 
   def myReverse2[A](as: List[A]): List[A] =
     as.foldLeft(List[A]())((b, a) => a :: b)
+
+  //-------------------------------------------------------
+
+  /** Problem 6 - isPalindrome */
+  def isPalindrome[A](as: List[A]): Boolean =
+    as == as.reverse
 }

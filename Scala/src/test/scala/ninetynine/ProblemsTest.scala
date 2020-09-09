@@ -44,4 +44,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.myReverse2(List()) === List())
     assert(Problems.myReverse2(List(1, 2, 3, 4, 5)) === List(5, 4, 3, 2, 1))
   }
+
+  test("Problem 6 - isPalindrome") {
+    assert(Problems.isPalindrome(List()))
+    assert(Problems.isPalindrome(List(1, 2, 3, 2, 1)))
+    assert(!Problems.isPalindrome(List(1, 2, 3, 4, 5)))
+  }
 }

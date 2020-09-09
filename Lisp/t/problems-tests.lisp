@@ -44,3 +44,8 @@
   (assert-equal '(5 4 3 2 1) (nn:my-reverse '(1 2 3 4 5)))
   (assert-equal nil (nn:my-reverse2 nil))
   (assert-equal '(5 4 3 2 1) (nn:my-reverse2 '(1 2 3 4 5))))
+
+(define-test test-palindrome?
+  (assert-true (nn:palindrome? nil))
+  (assert-true (nn:palindrome? '(1 2 3 2 1)))
+  (assert-false (nn:palindrome? '(1 2 3 4 5))))

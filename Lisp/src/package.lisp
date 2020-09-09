@@ -29,4 +29,5 @@
            :element-at
            :my-length
            :my-reverse
-           :my-reverse2))
+           :my-reverse2
+           :palindrome?))

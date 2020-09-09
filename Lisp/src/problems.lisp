@@ -82,3 +82,9 @@
 
 (defun my-reverse2 (lst)
   (reduce (flip #'cons) lst :initial-value nil))
+
+
+;; Problem 6 - find out whether a list is a palindrome
+
+(defun palindrome? (lst)
+  (equal lst (reverse lst)))
