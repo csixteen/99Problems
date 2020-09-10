@@ -50,4 +50,13 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.isPalindrome(List(1, 2, 3, 2, 1)))
     assert(!Problems.isPalindrome(List(1, 2, 3, 4, 5)))
   }
+
+  test("Problem 7 - flatten") {
+    assert(Problems.flatten(List()) === List())
+    assert(Problems.flatten(List(1, 2, 3, 4, 5)) === List(1, 2, 3, 4, 5))
+    assert(Problems.flatten(List(1, List(2, List(3, 4)), 5)) === List(1, 2, 3, 4, 5))
+    assert(Problems.flatten2(List()) === List())
+    assert(Problems.flatten2(List(1, 2, 3, 4, 5)) === List(1, 2, 3, 4, 5))
+    assert(Problems.flatten2(List(1, List(2, List(3, 4)), 5)) === List(1, 2, 3, 4, 5))
+  }
 }

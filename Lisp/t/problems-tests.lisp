@@ -49,3 +49,8 @@
   (assert-true (nn:palindrome? nil))
   (assert-true (nn:palindrome? '(1 2 3 2 1)))
   (assert-false (nn:palindrome? '(1 2 3 4 5))))
+
+(define-test test-flatten
+  (assert-equal nil (nn:flatten nil))
+  (assert-equal '(1 2 3 4 5) (nn:flatten '(1 2 3 4 5)))
+  (assert-equal '(1 2 3 4 5) (nn:flatten '((1 (2 3)) 4 (5)))))

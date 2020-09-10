@@ -30,4 +30,5 @@
            :my-length
            :my-reverse
            :my-reverse2
-           :palindrome?))
+           :palindrome?
+           :flatten))

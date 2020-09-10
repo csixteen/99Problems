@@ -88,3 +88,12 @@
 
 (defun palindrome? (lst)
   (equal lst (reverse lst)))
+
+
+;; Problem 7 - flatten a nested list structure
+
+(defun flatten (lst)
+  (cond ((null lst) nil)
+        ((listp (car lst))
+         (append (flatten (car lst)) (flatten (cdr lst))))
+        (t (cons (car lst) (flatten (cdr lst))))))

@@ -91,4 +91,24 @@ object Problems {
   /** Problem 6 - isPalindrome */
   def isPalindrome[A](as: List[A]): Boolean =
     as == as.reverse
+
+  //------------------------------------------------------
+
+  /** Problem 7 - flatten */
+  def flatten(as: List[Any]): List[Any] =
+    as flatMap {
+      case xs: List[_] => flatten(xs)
+      case x => List(x)
+    }
+
+  def flatten2(as: List[Any]): List[Any] = {
+    def go(xs: List[Any], acc: List[Any]): List[Any] =
+      xs match {
+        case List() => acc
+        case (x: List[_]) :: y => go(y, go(x, acc))
+        case h :: t => go(t, h :: acc)
+      }
+
+    go(as, List()).reverse
+  }
 }
