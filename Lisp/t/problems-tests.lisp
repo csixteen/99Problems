@@ -54,3 +54,8 @@
   (assert-equal nil (nn:flatten nil))
   (assert-equal '(1 2 3 4 5) (nn:flatten '(1 2 3 4 5)))
   (assert-equal '(1 2 3 4 5) (nn:flatten '((1 (2 3)) 4 (5)))))
+
+(define-test test-compress
+  (assert-equal nil (nn:compress nil))
+  (assert-equal '(1 2 3) (nn:compress '(1 2 3)))
+  (assert-equal '(1 2 3) (nn:compress '(1 1 1 2 2 3 3 3 3))))

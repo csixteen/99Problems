@@ -31,4 +31,5 @@
            :my-reverse
            :my-reverse2
            :palindrome?
-           :flatten))
+           :flatten
+           :compress))

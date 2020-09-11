@@ -111,4 +111,19 @@ object Problems {
 
     go(as, List()).reverse
   }
+
+  //------------------------------------------------------
+
+  /** Problem 8 - compress */
+  def compress[A](as: List[A]): List[A] =
+    as match {
+      case Nil => List()
+      case h::t => h :: compress(t.dropWhile(_ == h))
+    }
+
+  def compress2[A](as: List[A]): List[A] =
+    as match {
+      case x :: (ys @ List(y, _*)) => if (x == y) compress(ys) else x :: compress(ys)
+      case _ => List()
+    }
 }

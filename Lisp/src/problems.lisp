@@ -97,3 +97,12 @@
         ((listp (car lst))
          (append (flatten (car lst)) (flatten (cdr lst))))
         (t (cons (car lst) (flatten (cdr lst))))))
+
+
+;; Problem 8 - remove consecutive duplicates from a list
+
+(defun compress (lst)
+  (cond ((< (length lst) 2) lst)
+        ((eql (first lst) (second lst))
+         (compress (cdr lst)))
+        (t (cons (first lst) (compress (cdr lst))))))
