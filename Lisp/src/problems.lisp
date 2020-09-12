@@ -106,3 +106,16 @@
         ((eql (first lst) (second lst))
          (compress (cdr lst)))
         (t (cons (first lst) (compress (cdr lst))))))
+
+
+;; Problem 8 - pack consecutive duplicates into sublists
+
+(defun pack (lst)
+  (reduce #'(lambda (x acc)
+              (cond ((null acc) (list (list x)))
+                    (t (destructuring-bind (y . ys) acc
+                         (cond ((eql x (car y)) (cons (cons x y) ys))
+                               (t (cons (list x) (cons y ys))))))))
+          lst
+          :initial-value nil
+          :from-end t))

@@ -126,4 +126,17 @@ object Problems {
       case x :: (ys @ List(y, _*)) => if (x == y) compress(ys) else x :: compress(ys)
       case _ => List()
     }
+
+  //------------------------------------------------------
+  
+  /** Problem 9 - pack consecutive duplicates into sublists */
+
+  def pack[A](as: List[A]): List[List[A]] =
+    as match {
+      case Nil => List()
+      case h::t => {
+        val (left, right) = t.span(_ == h)
+        (h :: left) :: pack(right)
+      }
+    }
 }

@@ -68,4 +68,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.compress2(List(1, 2, 3, 4, 5)) === List(1, 2, 3, 4, 5))
     assert(Problems.compress2(List(1, 1, 1, 2, 3, 3, 4, 4, 4)) === List(1, 2, 3, 4))
   }
+
+  test("Problem 9 - pack") {
+    assert(Problems.pack(List()) === List())
+    assert(Problems.pack(List(1, 2, 3)) === List(List(1), List(2), List(3)))
+    assert(Problems.pack(List(1, 1, 1, 2, 3, 3)) === List(List(1, 1, 1), List(2), List(3, 3)))
+  }
 }

@@ -59,3 +59,8 @@
   (assert-equal nil (nn:compress nil))
   (assert-equal '(1 2 3) (nn:compress '(1 2 3)))
   (assert-equal '(1 2 3) (nn:compress '(1 1 1 2 2 3 3 3 3))))
+
+(define-test test-pack
+  (assert-equal nil (nn:pack nil))
+  (assert-equal '((1) (2) (3)) (nn:pack '(1 2 3)))
+  (assert-equal '((1 1 1 1) (2) (3 3)) (nn:pack '(1 1 1 1 2 3 3))))
