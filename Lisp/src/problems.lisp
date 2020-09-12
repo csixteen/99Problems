@@ -108,7 +108,7 @@
         (t (cons (first lst) (compress (cdr lst))))))
 
 
-;; Problem 8 - pack consecutive duplicates into sublists
+;; Problem 9 - pack consecutive duplicates into sublists
 
 (defun pack (lst)
   (reduce #'(lambda (x acc)
