@@ -139,4 +139,11 @@ object Problems {
         (h :: left) :: pack(right)
       }
     }
+
+  //-------------------------------------------------------
+
+  /** Problem 10 - Run-length encoding of a list */
+
+  def encode[A](as: List[A]): List[(Int, A)] =
+    pack(as).map(g => (g.length, g.head))
 }

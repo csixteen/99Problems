@@ -33,4 +33,5 @@
            :palindrome?
            :flatten
            :compress
-           :pack))
+           :pack
+           :encode))

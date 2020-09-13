@@ -119,3 +119,10 @@
           lst
           :initial-value nil
           :from-end t))
+
+
+;; Problem 10 - Run-length encoding of a list
+
+(defun encode (lst)
+  (mapcar #'(lambda (g) (list (length g) (car g))) 
+          (pack lst)))
