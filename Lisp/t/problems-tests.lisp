@@ -69,3 +69,8 @@
   (assert-equal nil (nn:encode nil))
   (assert-equal '((1 1) (1 2) (1 3)) (nn:encode '(1 2 3)))
   (assert-equal '((4 1) (1 2) (2 3)) (nn:encode '(1 1 1 1 2 3 3))))
+
+(define-test test-encode-modified
+  (assert-equal nil (nn:encode-modified nil))
+  (assert-equal '(1 2 3) (nn:encode-modified '(1 2 3)))
+  (assert-equal '((4 1) 2 (2 3)) (nn:encode-modified '(1 1 1 1 2 3 3))))

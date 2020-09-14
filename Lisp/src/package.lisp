@@ -34,4 +34,5 @@
            :flatten
            :compress
            :pack
-           :encode))
+           :encode
+           :encode-modified))

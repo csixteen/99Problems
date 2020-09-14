@@ -126,3 +126,12 @@
 (defun encode (lst)
   (mapcar #'(lambda (g) (list (length g) (car g))) 
           (pack lst)))
+
+
+;; Problem 11 - Run-length encoding modified
+
+(defun encode-modified (lst)
+  (mapcar #'(lambda (g)
+              (let ((len (length g)))
+                (if (= len 1) (car g) (list len (car g)))))
+          (pack lst)))

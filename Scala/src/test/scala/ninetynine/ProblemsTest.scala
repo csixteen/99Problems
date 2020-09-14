@@ -1,5 +1,5 @@
 import org.scalatest.funsuite.AnyFunSuite
-import ninetynine.Problems
+import ninetynine._
 
 
 class ProblemsTest extends AnyFunSuite {
@@ -79,5 +79,12 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.encode(List()) === List())
     assert(Problems.encode(List(1, 2, 3)) === List((1, 1), (1, 2), (1, 3)))
     assert(Problems.encode(List(1, 1, 1, 2, 3, 3)) === List((3, 1), (1, 2), (2, 3)))
+  }
+
+  test("Problem 11 - encodeModified") {
+    assert(Problems.encodeModified(List()) === List())
+    assert(Problems.encodeModified(List(1, 2, 3)) === List(Single(1), Single(2), Single(3)))
+    assert(Problems.encodeModified(List(1, 1, 1, 2, 3, 3)) 
+      === List(Multiple(3, 1), Single(2), Multiple(2, 3)))
   }
 }

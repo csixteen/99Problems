@@ -146,4 +146,15 @@ object Problems {
 
   def encode[A](as: List[A]): List[(Int, A)] =
     pack(as).map(g => (g.length, g.head))
+
+
+  //-------------------------------------------------------
+
+  /** Problem 11 - Run-length encoding modified */
+
+  def encodeModified[A](as: List[A]): List[ListItem[A]] =
+    pack(as).map(g => {
+      if (g.length == 1) Single(g.head)
+      else Multiple(g.length, g.head)
+    })
 }
