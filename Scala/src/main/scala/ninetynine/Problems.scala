@@ -157,4 +157,15 @@ object Problems {
       if (g.length == 1) Single(g.head)
       else Multiple(g.length, g.head)
     })
+
+
+  //-------------------------------------------------------
+
+  /** Problem 12 - Decode modified run-length */
+
+  def decodeModified[A](as: List[ListItem[A]]): List[A] =
+    as.flatMap(a => a match {
+        case Single(s) => List(s)
+        case Multiple(n, s) => List.fill(n)(s)
+    })
 }

@@ -87,4 +87,11 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.encodeModified(List(1, 1, 1, 2, 3, 3)) 
       === List(Multiple(3, 1), Single(2), Multiple(2, 3)))
   }
+
+  test("Problem 12 - decodeModified") {
+    assert(Problems.decodeModified(List()) === List())
+    assert(Problems.decodeModified(List(Single(1), Single(2), Single(3))) === List(1, 2, 3))
+    assert(Problems.decodeModified(List(Multiple(3, 1), Single(2), Multiple(2, 3)))
+      === List(1, 1, 1, 2, 3, 3))
+  }
 }

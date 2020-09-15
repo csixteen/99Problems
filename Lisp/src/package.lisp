@@ -35,4 +35,5 @@
            :compress
            :pack
            :encode
-           :encode-modified))
+           :encode-modified
+           :decode-modified))
