@@ -148,3 +148,12 @@
                 (repeat (first e) (second e))
                 (list e)))
           lst))
+
+
+;; Problem 13 - Pretty much the same as problem 11
+
+
+;; Problem 14 - Duplicate the elements of a list
+
+(defun duplicate (lst)
+  (mapcan #'(lambda (x) (list x x)) lst))

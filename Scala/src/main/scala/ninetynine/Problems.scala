@@ -168,4 +168,12 @@ object Problems {
         case Single(s) => List(s)
         case Multiple(n, s) => List.fill(n)(s)
     })
+
+
+  //-------------------------------------------------------
+
+  /** Problem 14 - Duplicate the elements in a list */
+
+  def duplicate[A](as: List[A]): List[A] =
+    as.flatMap(x => List(x, x))
 }

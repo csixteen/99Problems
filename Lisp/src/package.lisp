@@ -36,4 +36,5 @@
            :pack
            :encode
            :encode-modified
-           :decode-modified))
+           :decode-modified
+           :duplicate))

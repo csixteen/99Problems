@@ -94,4 +94,9 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.decodeModified(List(Multiple(3, 1), Single(2), Multiple(2, 3)))
       === List(1, 1, 1, 2, 3, 3))
   }
+
+  test("Problem 14 - duplicate") {
+    assert(Problems.duplicate(List()) === List())
+    assert(Problems.duplicate(List(1, 2, 3)) === List(1, 1, 2, 2, 3, 3))
+  }
 }

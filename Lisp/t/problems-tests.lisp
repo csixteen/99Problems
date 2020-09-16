@@ -79,3 +79,7 @@
   (assert-equal nil (nn:decode-modified nil))
   (assert-equal '(1 2 3) (nn:decode-modified '(1 2 3)))
   (assert-equal '(1 1 1 1 2 3 3) (nn:decode-modified '((4 1) 2 (2 3)))))
+
+(define-test test-duplicate
+  (assert-equal nil (nn:duplicate nil))
+  (assert-equal '(1 1 2 2 3 3) (nn:duplicate '(1 2 3))))
