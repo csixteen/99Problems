@@ -140,7 +140,7 @@
 ;; Problem 12 - Decode modified run-length
 
 (defun repeat (n elem)
-  (loop for i from 0 to (1- n) collect elem))
+  (loop for i from 1 to n collect elem))
 
 (defun decode-modified (lst)
   (mapcan #'(lambda (e)
