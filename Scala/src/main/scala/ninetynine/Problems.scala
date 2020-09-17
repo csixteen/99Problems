@@ -176,4 +176,15 @@ object Problems {
 
   def duplicate[A](as: List[A]): List[A] =
     as.flatMap(x => List(x, x))
+
+  
+  //-------------------------------------------------------
+
+  /**
+   * Problem 15 - Replicate the elements of a list a given
+   * number of times.
+   */
+
+  def replicate[A](as: List[A], n: Int): List[A] =
+    as.flatMap(List.fill(n)(_))
 }

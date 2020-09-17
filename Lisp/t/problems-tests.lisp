@@ -83,3 +83,8 @@
 (define-test test-duplicate
   (assert-equal nil (nn:duplicate nil))
   (assert-equal '(1 1 2 2 3 3) (nn:duplicate '(1 2 3))))
+
+(define-test test-replicate
+  (assert-equal nil (nn:replicate nil 2))
+  (assert-equal '(1 2 3) (nn:replicate '(1 2 3) 1))
+  (assert-equal '(1 1 1 2 2 2 3 3 3) (nn:replicate '(1 2 3) 3)))

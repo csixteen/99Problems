@@ -157,3 +157,10 @@
 
 (defun duplicate (lst)
   (mapcan #'(lambda (x) (list x x)) lst))
+
+
+;; Problem 15 - Replicate the elements of a list a given
+;; number of times
+
+(defun replicate (lst n)
+  (mapcan #'(lambda (x) (repeat n x)) lst))

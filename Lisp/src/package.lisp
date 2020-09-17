@@ -37,4 +37,5 @@
            :encode
            :encode-modified
            :decode-modified
-           :duplicate))
+           :duplicate
+           :replicate))

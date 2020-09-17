@@ -99,4 +99,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.duplicate(List()) === List())
     assert(Problems.duplicate(List(1, 2, 3)) === List(1, 1, 2, 2, 3, 3))
   }
+
+  test("Problem 15 - replicate") {
+    assert(Problems.replicate(List(), 2) === List())
+    assert(Problems.replicate(List(1, 2, 3), 1) === List(1, 2, 3))
+    assert(Problems.replicate(List(1, 2, 3), 3) === List(1, 1, 1, 2, 2, 2, 3, 3, 3))
+  }
 }
