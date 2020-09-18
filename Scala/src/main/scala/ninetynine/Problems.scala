@@ -187,4 +187,15 @@ object Problems {
 
   def replicate[A](as: List[A], n: Int): List[A] =
     as.flatMap(List.fill(n)(_))
+
+
+  //--------------------------------------------------------
+
+  /** Problem 16 - drop every N elements of a list */
+
+  def dropEvery[A](as: List[A], n: Int): List[A] =
+    as match {
+      case Nil => Nil
+      case _ => as.take(n-1) ::: dropEvery(as.drop(n), n)
+    }
 }

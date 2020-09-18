@@ -77,9 +77,6 @@
                       (t (rev (cdr xs) (cons (car xs) acc))))))
     (rev lst nil)))
 
-(defun flip (f)
-  (lambda (x y) (funcall f y x)))
-
 (defun my-reverse2 (lst)
   (reduce (flip #'cons) lst :initial-value nil))
 
@@ -139,9 +136,6 @@
 
 ;; Problem 12 - Decode modified run-length
 
-(defun repeat (n elem)
-  (loop for i from 1 to n collect elem))
-
 (defun decode-modified (lst)
   (mapcan #'(lambda (e)
               (if (listp e)
@@ -164,3 +158,11 @@
 
 (defun replicate (lst n)
   (mapcan #'(lambda (x) (repeat n x)) lst))
+
+
+;; Problem 16 - Drop every N elements of a list
+
+(defun drop-every (n lst)
+  (when lst
+    (append (take (1- n) lst)
+            (drop-every n (drop n lst)))))

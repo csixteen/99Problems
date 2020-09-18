@@ -88,3 +88,8 @@
   (assert-equal nil (nn:replicate nil 2))
   (assert-equal '(1 2 3) (nn:replicate '(1 2 3) 1))
   (assert-equal '(1 1 1 2 2 2 3 3 3) (nn:replicate '(1 2 3) 3)))
+
+(define-test test-drop-every
+  (assert-equal nil (nn:drop-every 3 nil))
+  (assert-equal '(1 2) (nn:drop-every 3 '(1 2)))
+  (assert-equal '(1 2 4 5 7) (nn:drop-every 3 '(1 2 3 4 5 6 7))))

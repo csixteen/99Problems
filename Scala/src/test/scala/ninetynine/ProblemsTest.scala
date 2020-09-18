@@ -105,4 +105,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.replicate(List(1, 2, 3), 1) === List(1, 2, 3))
     assert(Problems.replicate(List(1, 2, 3), 3) === List(1, 1, 1, 2, 2, 2, 3, 3, 3))
   }
+
+  test("Problem 16 - dropEvery") {
+    assert(Problems.dropEvery(List(), 3) === List())
+    assert(Problems.dropEvery(List(1, 2), 3) === List(1, 2))
+    assert(Problems.dropEvery(List(1, 2, 3, 4 ,5, 6, 7), 3) === List(1, 2, 4, 5, 7))
+  }
 }

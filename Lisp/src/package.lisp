@@ -38,4 +38,5 @@
            :encode-modified
            :decode-modified
            :duplicate
-           :replicate))
+           :replicate
+           :drop-every))

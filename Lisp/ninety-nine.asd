@@ -7,7 +7,8 @@
   :pathname "src/"
   :serial t
   :components ((:file "package")
-               (:file "problems")))
+               (:file "problems")
+               (:file "utils")))
 
 (asdf:defsystem :ninety-nine/tests
   :description "99 Unit Tests"
