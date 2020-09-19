@@ -39,4 +39,5 @@
            :decode-modified
            :duplicate
            :replicate
-           :drop-every))
+           :drop-every
+           :split-at))

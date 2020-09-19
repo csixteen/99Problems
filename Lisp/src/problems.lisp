@@ -166,3 +166,9 @@
   (when lst
     (append (take (1- n) lst)
             (drop-every n (drop n lst)))))
+
+
+;; Problem 17 - Split a list into two parts
+
+(defun split-at (n lst)
+  (values (take n lst) (drop n lst)))

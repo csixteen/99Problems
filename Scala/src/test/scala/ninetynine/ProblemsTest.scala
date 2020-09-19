@@ -111,4 +111,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.dropEvery(List(1, 2), 3) === List(1, 2))
     assert(Problems.dropEvery(List(1, 2, 3, 4 ,5, 6, 7), 3) === List(1, 2, 4, 5, 7))
   }
+
+  test("Problem 17 - splitAt") {
+    assert(Problems.splitAt(List(), 2) === (List(), List()))
+    assert(Problems.splitAt(List(1), 3) === (List(1), List()))
+    assert(Problems.splitAt(List(1, 2, 3, 4, 5, 6), 3) === (List(1, 2, 3), List(4, 5, 6)))
+  }
 }

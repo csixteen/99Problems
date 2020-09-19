@@ -198,4 +198,12 @@ object Problems {
       case Nil => Nil
       case _ => as.take(n-1) ::: dropEvery(as.drop(n), n)
     }
+
+
+  //--------------------------------------------------------
+
+  /** Problem 17 - Split a list into two parts */
+
+  def splitAt[A](as: List[A], n: Int): (List[A], List[A]) =
+    (as.take(n), as.drop(n))
 }

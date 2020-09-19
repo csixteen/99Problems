@@ -93,3 +93,14 @@
   (assert-equal nil (nn:drop-every 3 nil))
   (assert-equal '(1 2) (nn:drop-every 3 '(1 2)))
   (assert-equal '(1 2 4 5 7) (nn:drop-every 3 '(1 2 3 4 5 6 7))))
+
+(define-test test-split-at
+  (multiple-value-bind (left right) (nn:split-at 3 nil)
+    (assert-nil left)
+    (assert-nil right))
+  (multiple-value-bind (left right) (nn:split-at 3 '(1))
+    (assert-equal left '(1))
+    (assert-nil right))
+  (multiple-value-bind (left right) (nn:split-at 3 '(1 2 3 4 5 6))
+    (assert-equal left '(1 2 3))
+    (assert-equal right '(4 5 6))))
