@@ -41,4 +41,5 @@
            :replicate
            :drop-every
            :split-at
-           :slice))
+           :slice
+           :rotate))

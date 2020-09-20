@@ -123,4 +123,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.slice(List(1, 2, 3), 3, 1).isLeft)
     assert(Problems.slice(List(1, 2, 3, 4, 5, 6), 3, 5) === Right(List(3, 4, 5)))
   }
+
+  test("Problem 19 - rotate") {
+    assert(Problems.rotate(List(), 3) === List())
+    assert(Problems.rotate(List(1), 3) === List(1))
+    assert(Problems.rotate(List(1, 2, 3, 4, 5), 3) === List(4, 5, 1, 2, 3))
+  }
 }

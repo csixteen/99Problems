@@ -90,18 +90,18 @@
   (assert-equal '(1 1 1 2 2 2 3 3 3) (nn:replicate '(1 2 3) 3)))
 
 (define-test test-drop-every
-  (assert-equal nil (nn:drop-every 3 nil))
-  (assert-equal '(1 2) (nn:drop-every 3 '(1 2)))
-  (assert-equal '(1 2 4 5 7) (nn:drop-every 3 '(1 2 3 4 5 6 7))))
+  (assert-equal nil (nn:drop-every nil 3))
+  (assert-equal '(1 2) (nn:drop-every '(1 2) 3))
+  (assert-equal '(1 2 4 5 7) (nn:drop-every '(1 2 3 4 5 6 7) 3)))
 
 (define-test test-split-at
-  (multiple-value-bind (left right) (nn:split-at 3 nil)
+  (multiple-value-bind (left right) (nn:split-at nil 3)
     (assert-nil left)
     (assert-nil right))
-  (multiple-value-bind (left right) (nn:split-at 3 '(1))
+  (multiple-value-bind (left right) (nn:split-at '(1) 3)
     (assert-equal left '(1))
     (assert-nil right))
-  (multiple-value-bind (left right) (nn:split-at 3 '(1 2 3 4 5 6))
+  (multiple-value-bind (left right) (nn:split-at '(1 2 3 4 5 6) 3)
     (assert-equal left '(1 2 3))
     (assert-equal right '(4 5 6))))
 
@@ -111,3 +111,8 @@
   (assert-error 'error (nn:slice '(1 2 3) 1 4))
   (assert-equal '(1 2 3) (nn:slice '(1 2 3) 1 3))
   (assert-equal '(3 4 5) (nn:slice '(1 2 3 4 5 6 7) 3 5)))
+
+(define-test test-rotate
+  (assert-nil (nn:rotate nil 3))
+  (assert-equal '(1 2 3) (nn:rotate '(1 2 3) 0))
+  (assert-equal '(4 5 1 2 3) (nn:rotate '(1 2 3 4 5) 3)))

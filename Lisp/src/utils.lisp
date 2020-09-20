@@ -10,10 +10,10 @@
   (loop for i from 1 to n collect elem))
 
 
-(defun take (n lst)
+(defun take (lst n)
   "Collects the first `n` elements of a list"
   (cond ((or (null lst) (zerop n)) nil)
-        (t (cons (car lst) (take (1- n) (cdr lst))))))
+        (t (cons (car lst) (take (cdr lst) (1- n))))))
 
 
 (defun take-while (p lst)
@@ -23,7 +23,7 @@
         (t (cons (car lst) (take-while p (cdr lst))))))
 
 
-(defun drop (n lst)
+(defun drop (lst n)
   "Drops the first `n` elements of a list"
   (nthcdr n lst))
 

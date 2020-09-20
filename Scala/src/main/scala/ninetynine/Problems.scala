@@ -215,4 +215,17 @@ object Problems {
   def slice[A](as: List[A], start: Int, end: Int): Either[String,List[A]] =
     if (start < 1 || start > end) Left("Invalid values for start and end")
     else Right(as drop(start-1) take(end-start+1))
+
+
+  //--------------------------------------------------------
+
+  /** Problem 19 - Rotate a list N places to the left */
+
+  def rotate[A](as: List[A], n: Int): List[A] = {
+    if (as.isEmpty) Nil
+    else {
+      val (head, tail) = splitAt(as, java.lang.Math.floorMod(n, as.length))
+      tail ::: head
+    }
+  }
 }

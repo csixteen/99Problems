@@ -162,16 +162,16 @@
 
 ;; Problem 16 - Drop every N elements of a list
 
-(defun drop-every (n lst)
+(defun drop-every (lst n)
   (when lst
-    (append (take (1- n) lst)
-            (drop-every n (drop n lst)))))
+    (append (take lst (1- n))
+            (drop-every (drop lst n) n))))
 
 
 ;; Problem 17 - Split a list into two parts
 
-(defun split-at (n lst)
-  (values (take n lst) (drop n lst)))
+(defun split-at (lst n)
+  (values (take lst n) (drop lst n)))
 
 
 ;; Problem 18 - Extract a slice from a list
@@ -179,4 +179,12 @@
 (defun slice (lst start end)
   (if (or (< start 1) (< end start) (> end (length lst)))
     (error "Invalid values for `start` and `end`")
-    (take (1+ (- end start)) (drop (1- start) lst))))
+    (take (drop lst (1- start)) (1+ (- end start)))))
+
+
+;; Problem 19 - Rotate a list N places to the left
+
+(defun rotate (lst n)
+  (unless (null lst)
+    (multiple-value-bind (head tail) (split-at lst (mod n (length lst)))
+      (append tail head))))
