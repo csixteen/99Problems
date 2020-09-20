@@ -117,4 +117,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.splitAt(List(1), 3) === (List(1), List()))
     assert(Problems.splitAt(List(1, 2, 3, 4, 5, 6), 3) === (List(1, 2, 3), List(4, 5, 6)))
   }
+
+  test("Problem 18 - slice") {
+    assert(Problems.slice(List(1, 2, 3), 0, 3).isLeft)
+    assert(Problems.slice(List(1, 2, 3), 3, 1).isLeft)
+    assert(Problems.slice(List(1, 2, 3, 4, 5, 6), 3, 5) === Right(List(3, 4, 5)))
+  }
 }

@@ -206,4 +206,13 @@ object Problems {
 
   def splitAt[A](as: List[A], n: Int): (List[A], List[A]) =
     (as.take(n), as.drop(n))
+
+
+  //--------------------------------------------------------
+
+  /** Problem 18 - Extract a slice from a list */
+
+  def slice[A](as: List[A], start: Int, end: Int): Either[String,List[A]] =
+    if (start < 1 || start > end) Left("Invalid values for start and end")
+    else Right(as drop(start-1) take(end-start+1))
 }

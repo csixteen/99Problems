@@ -104,3 +104,10 @@
   (multiple-value-bind (left right) (nn:split-at 3 '(1 2 3 4 5 6))
     (assert-equal left '(1 2 3))
     (assert-equal right '(4 5 6))))
+
+(define-test test-slice
+  (assert-error 'error (nn:slice '(1 2 3 4 5 6) 0 3))
+  (assert-error 'error (nn:slice '(1 2 3 4 5 6) 3 1))
+  (assert-error 'error (nn:slice '(1 2 3) 1 4))
+  (assert-equal '(1 2 3) (nn:slice '(1 2 3) 1 3))
+  (assert-equal '(3 4 5) (nn:slice '(1 2 3 4 5 6 7) 3 5)))

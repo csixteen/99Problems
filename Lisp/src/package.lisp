@@ -40,4 +40,5 @@
            :duplicate
            :replicate
            :drop-every
-           :split-at))
+           :split-at
+           :slice))

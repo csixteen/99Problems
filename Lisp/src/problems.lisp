@@ -172,3 +172,11 @@
 
 (defun split-at (n lst)
   (values (take n lst) (drop n lst)))
+
+
+;; Problem 18 - Extract a slice from a list
+
+(defun slice (lst start end)
+  (if (or (< start 1) (< end start) (> end (length lst)))
+    (error "Invalid values for `start` and `end`")
+    (take (1+ (- end start)) (drop (1- start) lst))))
