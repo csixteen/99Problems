@@ -129,4 +129,9 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.rotate(List(1), 3) === List(1))
     assert(Problems.rotate(List(1, 2, 3, 4, 5), 3) === List(4, 5, 1, 2, 3))
   }
+
+  test("Problem 20 - removeAt") {
+    assert(Problems.removeAt(List(), 3) === None)
+    assert(Problems.removeAt(List(1, 2, 3, 4), 2) === Some((2, List(1, 3, 4))))
+  }
 }

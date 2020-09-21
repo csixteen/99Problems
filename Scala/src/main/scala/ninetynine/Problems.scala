@@ -228,4 +228,16 @@ object Problems {
       tail ::: head
     }
   }
+
+
+  //---------------------------------------------------------
+
+  /** Problem 20 - Remove the kth element of a list */
+
+  def removeAt[A](as: List[A], n: Int): Option[(A, List[A])] = 
+    if (n < 1 || n > as.length) None
+    else {
+      val elem = as(n-1)
+      Some((elem, as.take(n-1) ::: as.drop(n)))
+    }
 }

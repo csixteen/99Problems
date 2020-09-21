@@ -42,4 +42,5 @@
            :drop-every
            :split-at
            :slice
-           :rotate))
+           :rotate
+           :remove-at))

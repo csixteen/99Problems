@@ -116,3 +116,10 @@
   (assert-nil (nn:rotate nil 3))
   (assert-equal '(1 2 3) (nn:rotate '(1 2 3) 0))
   (assert-equal '(4 5 1 2 3) (nn:rotate '(1 2 3 4 5) 3)))
+
+(define-test test-remove-at
+  (assert-error 'error (nn:remove-at '() 2))
+  (assert-error 'error (nn:remove-at '(1 2 3) 4))
+  (multiple-value-bind (elem residue) (nn:remove-at '(1 2 3 4) 2)
+    (assert-equal '(1 3 4) residue)
+    (assert-equal 2 elem)))

@@ -188,3 +188,14 @@
   (unless (null lst)
     (multiple-value-bind (head tail) (split-at lst (mod n (length lst)))
       (append tail head))))
+
+
+;; Problem 20 - Remove the kth element from a list
+
+(defun remove-at (lst n)
+  (if (or (< n 1) (> n (length lst)))
+    (error "N is out of bounds")
+    (let ((elem (nth (1- n) lst)))
+      (values elem
+              (append (take lst (1- n))
+                      (drop lst n))))))
