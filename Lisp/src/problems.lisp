@@ -199,3 +199,11 @@
       (values elem
               (append (take lst (1- n))
                       (drop lst n))))))
+
+
+;; Problem 21 - insert an element at a given position in a list
+
+(defun insert-at (lst e n)
+  (append (take lst (1- n))
+          (list e)
+          (drop lst (1- n))))

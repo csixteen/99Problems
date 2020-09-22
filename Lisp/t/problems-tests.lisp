@@ -123,3 +123,7 @@
   (multiple-value-bind (elem residue) (nn:remove-at '(1 2 3 4) 2)
     (assert-equal '(1 3 4) residue)
     (assert-equal 2 elem)))
+
+(define-test test-insert-at
+  (assert-equal '(1) (nn:insert-at nil 1 1))
+  (assert-equal '(1 5 2 3 4) (nn:insert-at '(1 2 3 4) 5 2)))

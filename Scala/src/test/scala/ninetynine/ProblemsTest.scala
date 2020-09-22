@@ -134,4 +134,9 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.removeAt(List(), 3) === None)
     assert(Problems.removeAt(List(1, 2, 3, 4), 2) === Some((2, List(1, 3, 4))))
   }
+
+  test("Problem 21 - insertAt") {
+    assert(Problems.insertAt(List(), 1, 1) === List(1))
+    assert(Problems.insertAt(List(1, 2, 3, 4), 5, 2) === List(1, 5, 2, 3, 4))
+  }
 }

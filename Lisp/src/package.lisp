@@ -43,4 +43,5 @@
            :split-at
            :slice
            :rotate
-           :remove-at))
+           :remove-at
+           :insert-at))

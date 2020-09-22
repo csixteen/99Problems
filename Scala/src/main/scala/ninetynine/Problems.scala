@@ -240,4 +240,12 @@ object Problems {
       val elem = as(n-1)
       Some((elem, as.take(n-1) ::: as.drop(n)))
     }
+
+
+  //----------------------------------------------------------
+
+  /** Problem 21 - Insert an element at a given position in a list */
+
+  def insertAt[A](as: List[A], a: A, n: Int): List[A] =
+    as.take(n-1) ::: List(a) ::: as.drop(n-1)
 }
