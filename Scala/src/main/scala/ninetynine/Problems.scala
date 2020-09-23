@@ -248,4 +248,18 @@ object Problems {
 
   def insertAt[A](as: List[A], a: A, n: Int): List[A] =
     as.take(n-1) ::: List(a) ::: as.drop(n-1)
+
+
+  //----------------------------------------------------------
+
+  /** Problem 22 - Create a list containing all integers within a given range */
+
+  def range(start: Int, end: Int): List[Int] = {
+    @annotation.tailrec
+    def go(a: Int, b: Int, acc: List[Int]): List[Int] =
+      if (b < a) acc
+      else go(a, b-1, b :: acc)
+
+    go(start, end, List())
+  }
 }

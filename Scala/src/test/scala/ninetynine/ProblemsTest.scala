@@ -139,4 +139,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.insertAt(List(), 1, 1) === List(1))
     assert(Problems.insertAt(List(1, 2, 3, 4), 5, 2) === List(1, 5, 2, 3, 4))
   }
+
+  test("Problem 22 - range") {
+    assert(Problems.range(5, 4) === List())
+    assert(Problems.range(4, 4) === List(4))
+    assert(Problems.range(4, 9) === List(4, 5, 6, 7, 8, 9))
+  }
 }

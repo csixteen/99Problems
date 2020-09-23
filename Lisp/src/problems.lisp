@@ -207,3 +207,10 @@
   (append (take lst (1- n))
           (list e)
           (drop lst (1- n))))
+
+
+;; Problem 22 - Create a list containing all integers within a given range
+
+(defun range (start end)
+  (unless (> start end)
+    (cons start (range (1+ start) end))))

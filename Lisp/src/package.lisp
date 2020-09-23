@@ -44,4 +44,5 @@
            :slice
            :rotate
            :remove-at
-           :insert-at))
+           :insert-at
+           :range))

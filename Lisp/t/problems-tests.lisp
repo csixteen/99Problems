@@ -127,3 +127,8 @@
 (define-test test-insert-at
   (assert-equal '(1) (nn:insert-at nil 1 1))
   (assert-equal '(1 5 2 3 4) (nn:insert-at '(1 2 3 4) 5 2)))
+
+(define-test test-range
+  (assert-equal nil (nn:range 5 3))
+  (assert-equal '(4) (nn:range 4 4))
+  (assert-equal '(4 5 6 7 8 9) (nn:range 4 9)))
