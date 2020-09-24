@@ -145,4 +145,11 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.range(4, 4) === List(4))
     assert(Problems.range(4, 9) === List(4, 5, 6, 7, 8, 9))
   }
+
+  test("Problem 23 - rndSelect") {
+    val lst = List('a', 'b', 'c', 'd', 'e', 'f')
+    val as1 = Problems.rndSelect(lst, 3)
+    assert(as1.length == 3)
+    assert(as1.forall(lst.contains(_)))
+  }
 }

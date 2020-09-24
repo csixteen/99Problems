@@ -214,3 +214,12 @@
 (defun range (start end)
   (unless (> start end)
     (cons start (range (1+ start) end))))
+
+
+;; Problem 23 - Extract a given number of randomly selected elements from a list
+
+(defun rnd-select (lst n)
+  (when (> n 0)
+    (let ((pos (random (length lst))))
+      (cons (nth pos lst)
+            (rnd-select lst (1- n))))))

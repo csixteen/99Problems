@@ -132,3 +132,10 @@
   (assert-equal nil (nn:range 5 3))
   (assert-equal '(4) (nn:range 4 4))
   (assert-equal '(4 5 6 7 8 9) (nn:range 4 9)))
+
+(define-test test-rnd-select
+  (let* ((lst '(a b c d e f))
+         (res (rnd-select lst 3)))
+    (assert-equal 3 (length res))
+    (assert-true (every #'(lambda (x) (member x lst))
+                        res))))

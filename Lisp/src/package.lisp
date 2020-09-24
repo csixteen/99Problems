@@ -45,4 +45,5 @@
            :rotate
            :remove-at
            :insert-at
-           :range))
+           :range
+           :rnd-select))

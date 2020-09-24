@@ -1,6 +1,6 @@
 package ninetynine
 
-import scala.util.Try
+import scala.util.{Random,Try}
 
 
 object Problems {
@@ -262,4 +262,17 @@ object Problems {
 
     go(start, end, List())
   }
+
+
+  //-----------------------------------------------------------
+
+  /** Problem 23 - Extract a given number of randomly selected elements from a list */
+
+  def rndSieve[A](as: List[A], rnd: Random): LazyList[A] = {
+    val pos = rnd.nextInt(as.length)
+    as(pos) #:: rndSieve(as, rnd)
+  }
+
+  def rndSelect[A](as: List[A], n: Int): List[A] =
+    rndSieve(as, new Random()).take(n).toList
 }
