@@ -223,3 +223,9 @@
     (let ((pos (random (length lst))))
       (cons (nth pos lst)
             (rnd-select lst (1- n))))))
+
+
+;; Problem 24 - Draw N different random numbers from the set 1..M
+
+(defun diff-select (n m)
+  (rnd-select (range 1 m) n))

@@ -275,4 +275,12 @@ object Problems {
 
   def rndSelect[A](as: List[A], n: Int): List[A] =
     rndSieve(as, new Random()).take(n).toList
+
+
+  //------------------------------------------------------------
+
+  /** Problem 24 - Draw N different random numbers from the set 1..M */
+
+  def diffSelect(n: Int, m: Int): List[Int] =
+    rndSelect(range(1, m), n)
 }

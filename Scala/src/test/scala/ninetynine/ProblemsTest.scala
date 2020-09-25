@@ -152,4 +152,11 @@ class ProblemsTest extends AnyFunSuite {
     assert(as1.length == 3)
     assert(as1.forall(lst.contains(_)))
   }
+
+  test("Problem 24 - diffSelect") {
+    val res = Problems.diffSelect(6, 49)
+    assert(res.length == 6)
+    assert(res.max < 50)
+    assert(res.distinct.length == 6)
+  }
 }

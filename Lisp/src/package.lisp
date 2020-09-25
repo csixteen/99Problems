@@ -46,4 +46,5 @@
            :remove-at
            :insert-at
            :range
-           :rnd-select))
+           :rnd-select
+           :diff-select))

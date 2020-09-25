@@ -139,3 +139,9 @@
     (assert-equal 3 (length res))
     (assert-true (every #'(lambda (x) (member x lst))
                         res))))
+
+(define-test test-diff-select
+  (let ((res (diff-select 6 49)))
+    (assert-equal 6 (length res))
+    (assert-equal 6 (length (remove-duplicates res)))
+    (assert-true (< (apply #'max res) 50))))
