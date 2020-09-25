@@ -23,6 +23,7 @@ object Problems {
   def myLast3[A](as: List[A]): Option[A] =
     as.reverse.headOption
 
+
   //------------------------------------------------------
 
   /** Problem 2 - find the but last element in a list */
@@ -39,6 +40,7 @@ object Problems {
   def butLast3[A](as: List[A]): Option[A] =
     Try(as.init.lastOption).getOrElse(None: Option[A])
 
+
   //------------------------------------------------------
 
   /** Problem 3 - find the kth element of a list (starting from 1) */
@@ -51,6 +53,7 @@ object Problems {
 
   def elementAt2[A](as: List[A], n: Int): Option[A] =
     as.drop(n-1).headOption
+
 
   //------------------------------------------------------
   
@@ -69,6 +72,7 @@ object Problems {
   def myLength2[A](as: List[A]): Int =
     as.foldLeft(0)((acc, _) => acc + 1)
 
+
   //-------------------------------------------------------
 
   /** Problem 5 - reverse a list */
@@ -86,11 +90,13 @@ object Problems {
   def myReverse2[A](as: List[A]): List[A] =
     as.foldLeft(List[A]())((b, a) => a :: b)
 
+
   //-------------------------------------------------------
 
   /** Problem 6 - isPalindrome */
   def isPalindrome[A](as: List[A]): Boolean =
     as == as.reverse
+
 
   //------------------------------------------------------
 
@@ -112,6 +118,7 @@ object Problems {
     go(as, List()).reverse
   }
 
+
   //------------------------------------------------------
 
   /** Problem 8 - compress */
@@ -127,6 +134,7 @@ object Problems {
       case _ => List()
     }
 
+
   //------------------------------------------------------
   
   /** Problem 9 - pack consecutive duplicates into sublists */
@@ -139,6 +147,7 @@ object Problems {
         (h :: left) :: pack(right)
       }
     }
+
 
   //-------------------------------------------------------
 
