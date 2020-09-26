@@ -219,13 +219,19 @@
 ;; Problem 23 - Extract a given number of randomly selected elements from a list
 
 (defun rnd-select (lst n)
-  (when (> n 0)
-    (let ((pos (random (length lst))))
-      (cons (nth pos lst)
-            (rnd-select lst (1- n))))))
+  (unless (or (zerop n) (null lst))
+    (let ((pos (1+ (random (length lst)))))
+      (multiple-value-bind (elem res) (remove-at lst pos)
+        (cons elem (rnd-select res (1- n)))))))
 
 
 ;; Problem 24 - Draw N different random numbers from the set 1..M
 
 (defun diff-select (n m)
   (rnd-select (range 1 m) n))
+
+
+;; Problem 25 - Generate a random permutation of the elements of a list
+
+(defun rnd-permutation (lst)
+  (rnd-select lst (length lst)))

@@ -47,4 +47,5 @@
            :insert-at
            :range
            :rnd-select
-           :diff-select))
+           :diff-select
+           :rnd-permutation))

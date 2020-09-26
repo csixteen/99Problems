@@ -145,3 +145,9 @@
     (assert-equal 6 (length res))
     (assert-equal 6 (length (remove-duplicates res)))
     (assert-true (< (apply #'max res) 50))))
+
+(define-test test-rnd-permutation
+  (let* ((lst '(#\a #\b #\c #\d #\e #\f))
+         (res (nn:rnd-permutation lst)))
+    (assert-false (equal lst res))
+    (assert-equal (sort res #'char<) lst)))
