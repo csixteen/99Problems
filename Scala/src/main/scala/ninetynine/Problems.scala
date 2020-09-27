@@ -292,4 +292,20 @@ object Problems {
 
   def diffSelect(n: Int, m: Int): List[Int] =
     rndSelect(range(1, m), n)
+
+
+  //-----------------------------------------------------------
+
+  /** Problem 25 - generate a random permutation of the elements of a list */
+
+  def rndPermutation[A](as: List[A]): List[A] =
+    as match {
+      case Nil => Nil
+      case x::xs => {
+        val rest = rndPermutation(xs)
+        val pos = (new Random()).nextInt(Math.max(1, rest.length))
+        val (left, right) = splitAt(rest, pos)
+        left ::: (x::right)
+      }
+    }
 }

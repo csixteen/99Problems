@@ -159,4 +159,11 @@ class ProblemsTest extends AnyFunSuite {
     assert(res.max < 50)
     assert(res.distinct.length == 6)
   }
+
+  test("Problem 25 - rndPermutation") {
+    val lst = List('a', 'b', 'c', 'd', 'e', 'f')
+    val res = Problems.rndPermutation(lst)
+    assert(lst != res)
+    assert(res.sorted == lst)
+  }
 }
