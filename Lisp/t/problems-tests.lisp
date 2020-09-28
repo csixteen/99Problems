@@ -151,3 +151,14 @@
          (res (nn:rnd-permutation lst)))
     (assert-false (equal lst res))
     (assert-equal (sort res #'char<) lst)))
+
+(define-test test-combinations
+  (let* ((lst '(#\a #\b #\c #\d))
+         (res (nn:combinations 2 lst)))
+    (assert-equal res
+                  '((#\a #\b)
+                    (#\a #\c)
+                    (#\a #\d)
+                    (#\b #\c)
+                    (#\b #\d)
+                    (#\c #\d)))))

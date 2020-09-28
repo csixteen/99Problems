@@ -308,4 +308,25 @@ object Problems {
         left ::: (x::right)
       }
     }
+
+
+  //------------------------------------------------------------
+
+  /**
+   * Problem 26 - Generate the combinations of K distinct objects chosen
+   * from the N elements of a list.
+   */
+
+  def combinations[A](k: Int, as: List[A]): List[List[A]] = {
+    if (k == 0) List(List())
+    else
+      as match {
+        case Nil => Nil
+        case h::t => {
+          val withHead = combinations(k-1, t).map(h :: _)
+          val withoutHead = combinations(k, t)
+          withHead ::: withoutHead
+        }
+      }
+  }
 }

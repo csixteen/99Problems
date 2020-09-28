@@ -235,3 +235,16 @@
 
 (defun rnd-permutation (lst)
   (rnd-select lst (length lst)))
+
+
+;; Problem 26 - Generate the combinations of K distinct objects chosen from
+;; the N elements of a list
+
+(defun combinations (k lst)
+  (cond ((zerop k) (list nil))
+        ((null lst) nil)
+        (t (destructuring-bind (head . tail) lst
+             (let ((with-head (mapcar #'(lambda (l) (cons head l))
+                                      (combinations (1- k) tail)))
+                   (without-head (combinations k tail)))
+               (append with-head without-head))))))

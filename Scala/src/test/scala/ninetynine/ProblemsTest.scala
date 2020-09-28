@@ -166,4 +166,16 @@ class ProblemsTest extends AnyFunSuite {
     assert(lst != res)
     assert(res.sorted == lst)
   }
+
+  test("Problem 26 - combinations") {
+    val lst = List('a', 'b', 'c', 'd')
+    val res = Problems.combinations(2, lst)
+    assert(res == List(
+      List('a', 'b'),
+      List('a', 'c'),
+      List('a', 'd'),
+      List('b', 'c'),
+      List('b', 'd'),
+      List('c', 'd')))
+  }
 }
