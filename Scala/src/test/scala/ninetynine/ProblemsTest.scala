@@ -178,4 +178,11 @@ class ProblemsTest extends AnyFunSuite {
       List('b', 'd'),
       List('c', 'd')))
   }
+
+  test("Problem 27 - group") {
+    assert(Problems.group(
+      List(2, 3, 4),
+      List("aldo", "beat", "carla", "david", "evi", "flip", "gary", "hugo", "ida")).length 
+      == 1260)
+  }
 }

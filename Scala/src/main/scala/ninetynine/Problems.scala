@@ -329,4 +329,34 @@ object Problems {
         }
       }
   }
+
+
+  //-------------------------------------------------------------
+
+  /** Problem 27 - Group the elements of a set into disjoint subsets */
+
+  // This version of `combinations` yields not only the elements we selected,
+  // but also the elements that we haven't selected.
+  def combModified[A](k: Int, as: List[A]): List[(List[A], List[A])] = {
+    if (k == 0) List((List(), as))
+    else
+      as match {
+        case Nil => Nil
+        case x::xs => {
+          val withHead = combModified(k-1, xs).map { case (ys, zs) => (x::ys, zs) }
+          val withoutHead = combModified(k, xs).map { case (ys, zs) => (ys, x::zs) }
+          withHead ::: withoutHead
+        }
+      }
+  }
+
+  def group[A](k: List[Int], as: List[A]): List[List[List[A]]] = {
+    (k, as) match {
+      case (Nil, _) => List(List())
+      case (n::ns, xs) =>
+        for((g, rs) <- combModified(n, xs);
+             gs <- group(ns, rs)
+        ) yield g::gs
+    }
+  }
 }
