@@ -185,4 +185,10 @@ class ProblemsTest extends AnyFunSuite {
       List("aldo", "beat", "carla", "david", "evi", "flip", "gary", "hugo", "ida")).length 
       == 1260)
   }
+
+  test("Problem 28 - lengthSort") {
+    assert(Problems.lengthSort(
+      List("abc", "de", "fgh", "de", "ijkl", "mn", "o"): List[Seq[Char]]) ==
+      (List("o", "de", "de", "mn", "abc", "fgh", "ijkl"): List[Seq[Char]]))
+  }
 }

@@ -1,5 +1,6 @@
 package ninetynine
 
+import scala.collection.immutable.AbstractSeq
 import scala.util.{Random,Try}
 
 
@@ -368,6 +369,6 @@ object Problems {
 
   /** Problem 28 - sorting a list of lists according to length of sublists */
 
-  def lengthSort[A](as: List[List[A]]): List[List[A]] =
+  def lengthSort[A](as: List[Seq[A]]): List[Seq[A]] =
     as.sortBy(_.length)
 }
