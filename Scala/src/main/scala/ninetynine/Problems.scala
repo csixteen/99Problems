@@ -277,13 +277,16 @@ object Problems {
 
   /** Problem 23 - Extract a given number of randomly selected elements from a list */
 
-  def rndSieve[A](as: List[A], rnd: Random): LazyList[A] = {
-    val pos = rnd.nextInt(as.length)
-    as(pos) #:: rndSieve(as, rnd)
+  def rndSelect[A](as: List[A], n: Int): List[A] = {
+    if (n == 0 || as.isEmpty) List()
+    else {
+      val pos = (new Random()).nextInt(as.length) + 1
+      removeAt(as, pos) match {
+        case Some((elem, rest)) => elem :: rndSelect(rest, n-1)
+        case _ => List()  // Shouldn't be reached
+      }
+    }
   }
-
-  def rndSelect[A](as: List[A], n: Int): List[A] =
-    rndSieve(as, new Random()).take(n).toList
 
 
   //------------------------------------------------------------
