@@ -353,10 +353,18 @@ object Problems {
   def group[A](k: List[Int], as: List[A]): List[List[List[A]]] = {
     (k, as) match {
       case (Nil, _) => List(List())
-      case (n::ns, xs) =>
-        for((g, rs) <- combModified(n, xs);
-             gs <- group(ns, rs)
-        ) yield g::gs
+      case (n::ns, xs) => {
+        val pairs = combModified(n, xs)
+        pairs.flatMap { case (g, rs) => group(ns, rs).map(g::_) }
+      }
     }
   }
+
+
+  //---------------------------------------------------------------
+
+  /** Problem 28 - sorting a list of lists according to length of sublists */
+
+  def lengthSort[A](as: List[List[A]]): List[List[A]] =
+    as.sortBy(_.length)
 }
