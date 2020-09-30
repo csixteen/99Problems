@@ -248,3 +248,29 @@
                                       (combinations (1- k) tail)))
                    (without-head (combinations k tail)))
                (append with-head without-head))))))
+
+
+;; Problem 27 - Group the elements of a set into disjoint subsets
+
+(defun comb-modified (k lst)
+  (cond ((zerop k) (list (list nil lst)))
+        ((null lst) nil)
+        (t (let* ((x (first lst))
+                  (xs (cdr lst))
+                  (with-head (mapcar #'(lambda (pair)
+                                         (list (cons x (first pair)) (second pair)))
+                                     (comb-modified (1- k) xs)))
+                  (without-head (mapcar #'(lambda (pair)
+                                            (list (first pair) (cons x (second pair))))
+                                        (comb-modified k xs))))
+             (append with-head without-head)))))
+
+(defun group (ks lst)
+  (cond ((null ks) (list nil))
+        (t (destructuring-bind (n . ns) ks
+             (let ((pairs (comb-modified n lst)))
+               (mapcan #'(lambda (pair)
+                           (mapcar #'(lambda (gs) (cons (first pair) gs))
+                                   (group ns (second pair))))
+                       pairs))))))
+

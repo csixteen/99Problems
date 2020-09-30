@@ -162,3 +162,13 @@
                     (#\b #\c)
                     (#\b #\d)
                     (#\c #\d)))))
+
+(define-test test-comb-modified
+  (let* ((lst '(#\a #\b #\c #\d))
+         (res (nn:comb-modified 2 lst)))
+    (assert-equal 6 (length res))))
+
+(define-test test-group
+  (let ((res (group '(2 3 4)
+                    '("aldo" "beat" "carla" "david" "evi" "flip" "gary" "hugo" "ida"))))
+    (assert-equal 1260 (length res))))

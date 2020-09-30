@@ -49,4 +49,6 @@
            :rnd-select
            :diff-select
            :rnd-permutation
-           :combinations))
+           :combinations
+           :comb-modified
+           :group))
