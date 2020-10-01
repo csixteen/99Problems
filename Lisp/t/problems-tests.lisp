@@ -172,3 +172,8 @@
   (let ((res (group '(2 3 4)
                     '("aldo" "beat" "carla" "david" "evi" "flip" "gary" "hugo" "ida"))))
     (assert-equal 1260 (length res))))
+
+(define-test test-length-sort
+  (assert-equal 
+    '((o) (d e) (d e) (m n) (a b c) (f g h) (i j k l))
+    (nn:length-sort '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))))

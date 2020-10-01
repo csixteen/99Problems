@@ -51,4 +51,5 @@
            :rnd-permutation
            :combinations
            :comb-modified
-           :group))
+           :group
+           :length-sort))

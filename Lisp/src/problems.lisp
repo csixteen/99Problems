@@ -274,3 +274,8 @@
                                    (group ns (second pair))))
                        pairs))))))
 
+
+;; Problem 28 - Sort a list of lists according to the length of the sublists
+
+(defun length-sort (lst)
+  (sort lst #'(lambda (a b) (< (length a) (length b)))))
