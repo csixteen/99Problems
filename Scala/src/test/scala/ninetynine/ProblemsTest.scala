@@ -188,7 +188,13 @@ class ProblemsTest extends AnyFunSuite {
 
   test("Problem 28 - lengthSort") {
     assert(Problems.lengthSort(
-      List("abc", "de", "fgh", "de", "ijkl", "mn", "o"): List[Seq[Char]]) ==
-      (List("o", "de", "de", "mn", "abc", "fgh", "ijkl"): List[Seq[Char]]))
+      List("abc", "de", "fgh", "de", "ijkl", "mn", "o")) ==
+        List("o", "de", "de", "mn", "abc", "fgh", "ijkl"))
+  }
+
+  test("Problem 28 - lengthFreqSort") {
+    assert(Problems.lengthFreqSort(
+      List("abc", "de", "fgh", "de", "ijkl", "mn", "o")) ==
+        List("ijkl", "o", "abc", "fgh", "de", "de", "mn"))
   }
 }

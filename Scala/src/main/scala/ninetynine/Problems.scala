@@ -369,6 +369,12 @@ object Problems {
 
   /** Problem 28 - sorting a list of lists according to length of sublists */
 
-  def lengthSort[A](as: List[Seq[A]]): List[Seq[A]] =
+  def lengthSort[A](as: List[String]): List[String] =
     as.sortBy(_.length)
+
+  def lengthFreqSort[A](as: List[String]): List[String] = {
+    val lengths = as.groupBy(_.length)
+    val freqs = lengths.values.groupBy(_.length)
+    freqs.values.flatMap(_.flatten.toList.sorted).toList
+  }
 }
