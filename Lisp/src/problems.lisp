@@ -275,7 +275,18 @@
                        pairs))))))
 
 
-;; Problem 28 - Sort a list of lists according to the length of the sublists
+;; Problem 28
+
+;;; a-) Sort a list of lists according to the length of the sublists
 
 (defun length-sort (lst)
   (sort lst #'(lambda (a b) (< (length a) (length b)))))
+
+;;; b-) Sort a list of lists according to the frequency of the length of the sublists
+
+(defun length-freq-sort (lst)
+  (let* ((lengths (group-by lst #'length))
+         (freqs (group-by (get-hash-table-values lengths) #'length))
+         (freq-values (get-hash-table-values freqs)))
+    (flatten (mapcar #'(lambda (e) (sort (mapcan #'identity e) #'string<))
+            (sort freq-values #'list-length>)))))

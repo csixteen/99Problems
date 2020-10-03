@@ -177,3 +177,8 @@
   (assert-equal 
     '((o) (d e) (d e) (m n) (a b c) (f g h) (i j k l))
     (nn:length-sort '((a b c) (d e) (f g h) (d e) (i j k l) (m n) (o)))))
+
+(define-test test-length-freq-sort
+  (assert-equal
+    '("ijkl" "o" "abc" "fgh" "de" "de" "mn")
+    (nn:length-freq-sort '("abc" "de" "fgh" "de" "ijkl" "mn" "o"))))

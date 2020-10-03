@@ -33,3 +33,26 @@
   is true"
   (cond ((or (null lst) (not (funcall p (car lst)))) lst)
         (t (drop-while p (cdr lst)))))
+
+(defun group-by (lst f)
+  "Groups the elements of a list according to the result of
+  applying `f` to each element."
+  (labels ((group-rec (xs h)
+                      (cond ((null xs) h)
+                            (t (let* ((x (car xs))
+                                      (res (funcall f x)))
+                                 (push x (gethash res h))
+                                 (group-rec (cdr xs) h))))))
+    (group-rec lst (make-hash-table))))
+
+(defun get-hash-table-values (h)
+  (let ((res nil))
+    (with-hash-table-iterator (generator-fn h)
+      (loop
+        (multiple-value-bind (more? key value) (generator-fn)
+          (declare (ignorable key))
+          (unless more? (return res))
+          (push (reverse value) res))))))
+
+(defun list-length> (a b)
+  (> (length a) (length b)))

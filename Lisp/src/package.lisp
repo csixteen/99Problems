@@ -52,4 +52,5 @@
            :combinations
            :comb-modified
            :group
-           :length-sort))
+           :length-sort
+           :length-freq-sort))
