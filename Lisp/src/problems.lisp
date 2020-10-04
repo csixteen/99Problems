@@ -299,5 +299,21 @@
 
 
 ;; Problem 31 - Determine whether a given number is prime
-;; TODO
-(defun is-prime (x) t)
+
+; https://rosettacode.org/wiki/Sieve_of_Eratosthenes#Common_Lisp
+(defun sieve-of-eratosthenes (maximum)
+  (loop
+    with sieve = (make-array (1+ maximum)
+                             :element-type 'bit
+                             :initial-element 0)
+    for candidate from 2 to maximum
+    when (zerop (bit sieve candidate))
+    collect candidate
+    and do (loop for composite from (expt candidate 2) 
+                 to maximum by candidate
+                 do (setf (bit sieve composite) 1))))
+
+(defun is-prime (n)
+  (and (> n 1)
+       (not (find-if #'(lambda (x) (zerop (mod n x)))
+                     (sieve-of-eratosthenes (floor (sqrt n)))))))
