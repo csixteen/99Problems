@@ -382,4 +382,9 @@ object Problems {
     val freqs = lengths.values.groupBy(_.length)
     freqs.values.flatMap(_.flatten.toList.sorted).toList
   }
+
+
+  ////****************************************************
+  ////
+  ////                Arithmetic
 }

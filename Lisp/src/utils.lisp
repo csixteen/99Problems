@@ -41,7 +41,8 @@
                       (cond ((null xs) h)
                             (t (let* ((x (car xs))
                                       (res (funcall f x)))
-                                 (push x (gethash res h))
+                                 (setf (gethash res h)
+                                       (append (gethash res h) (list x)))
                                  (group-rec (cdr xs) h))))))
     (group-rec lst (make-hash-table))))
 
@@ -52,7 +53,7 @@
         (multiple-value-bind (more? key value) (generator-fn)
           (declare (ignorable key))
           (unless more? (return res))
-          (push (reverse value) res))))))
+          (push value res))))))
 
 (defun list-length> (a b)
   (> (length a) (length b)))

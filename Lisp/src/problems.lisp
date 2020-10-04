@@ -22,7 +22,8 @@
 
 
 ;;;--------------------------------------------
-;;; Lists
+;;;
+;;;                  Lists
 
 
 ;; Problem 1 - find the last element of a list
@@ -290,3 +291,8 @@
          (freq-values (get-hash-table-values freqs)))
     (flatten (mapcar #'(lambda (e) (sort (mapcan #'identity e) #'string<))
             (sort freq-values #'list-length>)))))
+
+
+;;;--------------------------------------------
+;;;
+;;;                Arithmetic
