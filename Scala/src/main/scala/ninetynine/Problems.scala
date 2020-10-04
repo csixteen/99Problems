@@ -387,4 +387,15 @@ object Problems {
   ////****************************************************
   ////
   ////                Arithmetic
+
+
+  /** Problem 31 - Determine whether a given integer number is prime. */
+
+  private def sieve(as: LazyList[Int]): LazyList[Int] =
+    as.head #:: sieve(as.tail).filter(x => x % as.head != 0)
+
+  val primes: LazyList[Int] = sieve(LazyList.from(2))
+
+  def isPrime(a: Int): Boolean =
+    a > 1 && !primes.takeWhile(_ <= math.sqrt(a)).exists(a % _ == 0)
 }

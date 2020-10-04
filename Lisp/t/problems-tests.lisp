@@ -182,3 +182,9 @@
   (assert-equal
     '("ijkl" "o" "abc" "fgh" "de" "de" "mn")
     (nn:length-freq-sort '("abc" "de" "fgh" "de" "ijkl" "mn" "o"))))
+
+(define-test test-is-prime
+  (assert-true (nn:is-prime 47))
+  (assert-true (nn:is-prime 2))
+  (assert-false (nn:is-prime 1))
+  (assert-false (nn:is-prime 49)))

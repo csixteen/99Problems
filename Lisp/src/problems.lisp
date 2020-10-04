@@ -296,3 +296,8 @@
 ;;;--------------------------------------------
 ;;;
 ;;;                Arithmetic
+
+
+;; Problem 31 - Determine whether a given number is prime
+;; TODO
+(defun is-prime (x) t)

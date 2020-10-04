@@ -53,4 +53,5 @@
            :comb-modified
            :group
            :length-sort
-           :length-freq-sort))
+           :length-freq-sort
+           :is-prime))

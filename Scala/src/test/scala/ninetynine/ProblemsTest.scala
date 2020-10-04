@@ -197,4 +197,10 @@ class ProblemsTest extends AnyFunSuite {
       List("abc", "de", "fgh", "de", "ijkl", "mn", "o")) ==
         List("ijkl", "o", "abc", "fgh", "de", "de", "mn"))
   }
+
+  test("Problem 31 - isPrime") {
+    assert(Problems.isPrime(47))
+    assert(!Problems.isPrime(1))
+    assert(!Problems.isPrime(49))
+  }
 }
