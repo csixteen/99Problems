@@ -400,6 +400,8 @@ object Problems {
     a > 1 && !primes.takeWhile(_ <= math.sqrt(a)).exists(a % _ == 0)
 
 
+  //---------------------------------------------------------------
+
   /**
    * Problem 32 - Determine the greatest common divisor of two positive 
    * integer numbers.
