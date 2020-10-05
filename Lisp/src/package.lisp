@@ -21,15 +21,13 @@
 (uiop:define-package :ninety-nine
   (:nicknames :nn)
   (:use :cl)
-  (:export :my-last
-           :my-last2
-           :my-last3
-           :my-last4
+  (:export 
+           ;; Lists
+           :my-last
            :but-last
            :element-at
            :my-length
            :my-reverse
-           :my-reverse2
            :palindrome?
            :flatten
            :compress
@@ -54,4 +52,6 @@
            :group
            :length-sort
            :length-freq-sort
-           :is-prime))
+           ;; Arithmetic
+           :is-prime
+           :gcd2))

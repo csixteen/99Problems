@@ -317,3 +317,10 @@
   (and (> n 1)
        (not (find-if #'(lambda (x) (zerop (mod n x)))
                      (sieve-of-eratosthenes (floor (sqrt n)))))))
+
+
+;; Problem 32 - Determine the greatest common divisor of two positive integer numbers
+
+(defun gcd2 (a b)
+  "gcd is already an existing symbol"
+  (if (zerop b) (abs a) (gcd2 b (mod a b))))

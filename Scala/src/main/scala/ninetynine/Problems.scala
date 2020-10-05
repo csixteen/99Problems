@@ -398,4 +398,14 @@ object Problems {
 
   def isPrime(a: Int): Boolean =
     a > 1 && !primes.takeWhile(_ <= math.sqrt(a)).exists(a % _ == 0)
+
+
+  /**
+   * Problem 32 - Determine the greatest common divisor of two positive 
+   * integer numbers.
+   */
+
+  def gcd(a: Int, b: Int): Int =
+    if (b == 0) math.abs(a)
+    else gcd(b, a % b)
 }

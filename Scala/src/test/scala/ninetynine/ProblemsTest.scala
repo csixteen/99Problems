@@ -203,4 +203,10 @@ class ProblemsTest extends AnyFunSuite {
     assert(!Problems.isPrime(1))
     assert(!Problems.isPrime(49))
   }
+
+  test("Problem 32 - gcd") {
+    assert(Problems.gcd(36, 63) == 9)
+    assert(Problems.gcd(-3, -6) == 3)
+    assert(Problems.gcd(-3, 6) == 3)
+  }
 }

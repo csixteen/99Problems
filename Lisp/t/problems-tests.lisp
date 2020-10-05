@@ -23,10 +23,7 @@
 
 
 (define-test test-my-last
-  (assert-equal 1 (nn:my-last '(5 4 3 2 1)))
-  (assert-equal 1 (nn:my-last2 '(5 4 3 2 1)))
-  (assert-equal 1 (nn:my-last3 '(5 4 3 2 1)))
-  (assert-equal 1 (nn:my-last4 '(5 4 3 2 1))))
+  (assert-equal 1 (nn:my-last '(5 4 3 2 1))))
 
 (define-test test-but-last
   (assert-equal 2 (nn:but-last '(5 4 3 2 1))))
@@ -41,9 +38,7 @@
 
 (define-test test-my-reverse
   (assert-equal nil (nn:my-reverse nil))
-  (assert-equal '(5 4 3 2 1) (nn:my-reverse '(1 2 3 4 5)))
-  (assert-equal nil (nn:my-reverse2 nil))
-  (assert-equal '(5 4 3 2 1) (nn:my-reverse2 '(1 2 3 4 5))))
+  (assert-equal '(5 4 3 2 1) (nn:my-reverse '(1 2 3 4 5))))
 
 (define-test test-palindrome?
   (assert-true (nn:palindrome? nil))
@@ -188,3 +183,8 @@
   (assert-true (nn:is-prime 2))
   (assert-false (nn:is-prime 1))
   (assert-false (nn:is-prime 49)))
+
+(define-test test-gcd2
+  (assert-equal 9 (nn:gcd2 36 63))
+  (assert-equal 3 (nn:gcd2 -3 -6))
+  (assert-equal 3 (nn:gcd2 -3 6)))
