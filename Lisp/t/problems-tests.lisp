@@ -188,3 +188,7 @@
   (assert-equal 9 (nn:gcd2 36 63))
   (assert-equal 3 (nn:gcd2 -3 -6))
   (assert-equal 3 (nn:gcd2 -3 6)))
+
+(define-test test-coprime
+  (assert-true (nn:coprime 35 64))
+  (assert-false (nn:coprime 21 49)))

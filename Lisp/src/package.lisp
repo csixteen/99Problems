@@ -54,4 +54,5 @@
            :length-freq-sort
            ;; Arithmetic
            :is-prime
-           :gcd2))
+           :gcd2
+           :coprime))

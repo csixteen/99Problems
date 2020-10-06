@@ -209,4 +209,9 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.gcd(-3, -6) == 3)
     assert(Problems.gcd(-3, 6) == 3)
   }
+
+  test("Problem 33 - coprime") {
+    assert(Problems.coprime(35, 64))
+    assert(!Problems.coprime(21, 49))
+  }
 }

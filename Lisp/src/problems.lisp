@@ -324,3 +324,10 @@
 (defun gcd2 (a b)
   "gcd is already an existing symbol"
   (if (zerop b) (abs a) (gcd2 b (mod a b))))
+
+
+;; Problem 33 - Determine whether two positive integer numbers are coprime. Two numbers
+;; are coprime if their greatest common divisor equals 1.
+
+(defun coprime (a b)
+  (= 1 (gcd2 a b)))
