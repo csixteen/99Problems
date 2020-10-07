@@ -214,4 +214,9 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.coprime(35, 64))
     assert(!Problems.coprime(21, 49))
   }
+
+  test("Problem 34 - totientPhi") {
+    assert(Problems.totientPhi(1) == 1)
+    assert(Problems.totientPhi(10) == 4)
+  }
 }

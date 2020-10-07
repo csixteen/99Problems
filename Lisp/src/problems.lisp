@@ -331,3 +331,10 @@
 
 (defun coprime (a b)
   (= 1 (gcd2 a b)))
+
+
+;; Problem 34 - Calculate Euler's Totient function phi(m)
+
+(defun totient-phi (m)
+  (if (= 1 m) 1
+    (length (loop for r from 1 to m when (coprime r m) collect r))))

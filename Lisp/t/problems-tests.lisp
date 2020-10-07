@@ -192,3 +192,7 @@
 (define-test test-coprime
   (assert-true (nn:coprime 35 64))
   (assert-false (nn:coprime 21 49)))
+
+(define-test test-totient-phi
+  (assert-equal 1 (nn:totient-phi 1))
+  (assert-equal 4 (nn:totient-phi 10)))

@@ -55,4 +55,5 @@
            ;; Arithmetic
            :is-prime
            :gcd2
-           :coprime))
+           :coprime
+           :totient-phi))

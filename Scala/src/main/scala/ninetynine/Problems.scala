@@ -420,4 +420,13 @@ object Problems {
    */
 
   def coprime(a: Int, b: Int): Boolean = 1 == gcd(a, b)
+
+
+  //----------------------------------------------------------------
+
+  /** Problem 34 - Calculate Euler's totient function phi(m) */
+
+  def totientPhi(m: Int): Int =
+    if (m == 1) 1
+    else (1 to m).filter(coprime(_, m)).length
 }
