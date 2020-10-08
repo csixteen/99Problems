@@ -338,3 +338,17 @@
 (defun totient-phi (m)
   (if (= 1 m) 1
     (length (loop for r from 1 to m when (coprime r m) collect r))))
+
+
+;; Problem 35 - Determine the prime factors of a given positive integer. Construct a flat
+;; list containing the prime factors in ascending order.
+
+(defun prime-factors (n)
+  (labels ((factors (i primes acc)
+                    (cond ((= 1 i) acc)
+                          ((zerop (mod i (car primes)))
+                           (factors (/ i (car primes)) primes (cons (car primes) acc)))
+                          (t (factors i (cdr primes) acc)))))
+    (factors n
+             (reverse (sieve-of-eratosthenes (floor (/ n 2))))
+             nil)))

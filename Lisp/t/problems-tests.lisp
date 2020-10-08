@@ -196,3 +196,7 @@
 (define-test test-totient-phi
   (assert-equal 1 (nn:totient-phi 1))
   (assert-equal 4 (nn:totient-phi 10)))
+
+(define-test test-prime-factors
+  (assert-equal '(3 3 5 7) (nn:prime-factors 315))
+  (assert-equal '(2 47) (nn:prime-factors 94)))

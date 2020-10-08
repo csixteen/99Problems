@@ -56,4 +56,5 @@
            :is-prime
            :gcd2
            :coprime
-           :totient-phi))
+           :totient-phi
+           :prime-factors))
