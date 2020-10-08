@@ -429,4 +429,24 @@ object Problems {
   def totientPhi(m: Int): Int =
     if (m == 1) 1
     else (1 to m).filter(coprime(_, m)).length
+
+
+  //----------------------------------------------------------------
+
+  /**
+   * Problem 35 - Determine the prime factors of a given positive integer.
+   * Construct a flat list containing the prime factors in ascending order.
+   */
+
+  @annotation.tailrec
+  private def factors(n: Int, p: List[Int], acc: List[Int]): List[Int] = {
+    if (n == 1) acc
+    else {
+      val xs = p.dropWhile(n % _ != 0)
+      factors(n / xs.head, xs, xs.head :: acc)
+    }
+  }
+
+  def primeFactors(n: Int): List[Int] =
+    factors(n, primes.takeWhile(_ <= n/2).reverse.toList, List())
 }

@@ -219,4 +219,9 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.totientPhi(1) == 1)
     assert(Problems.totientPhi(10) == 4)
   }
+
+  test("Problem 35 - primeFactors") {
+    assert(Problems.primeFactors(94) == List(2, 47))
+    assert(Problems.primeFactors(315) == List(3, 3, 5, 7))
+  }
 }
