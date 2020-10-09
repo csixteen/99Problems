@@ -449,4 +449,15 @@ object Problems {
 
   def primeFactors(n: Int): List[Int] =
     factors(n, primes.takeWhile(_ <= n/2).reverse.toList, List())
+
+
+  //----------------------------------------------------------------
+
+  /**
+   * Problem 36 - Determine the prime factors of a given positive integer
+   * with their multiplicity.
+   */
+
+  def primeFactorsMult(n: Int): List[(Int,Int)] =
+    encode(primeFactors(n)).map { case (a,b) => (b,a) }
 }

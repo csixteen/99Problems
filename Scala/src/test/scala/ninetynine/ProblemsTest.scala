@@ -224,4 +224,8 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.primeFactors(94) == List(2, 47))
     assert(Problems.primeFactors(315) == List(3, 3, 5, 7))
   }
+
+  test("Problem 36 - primeFactorsMult") {
+    assert(Problems.primeFactorsMult(315) == List((3, 2), (5, 1), (7, 1)))
+  }
 }

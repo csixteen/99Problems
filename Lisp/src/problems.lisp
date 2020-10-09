@@ -352,3 +352,10 @@
     (factors n
              (reverse (sieve-of-eratosthenes (floor (/ n 2))))
              nil)))
+
+
+;; Problem 36 - Determine the prime factors of a given positive integer with their
+;; multiplicity.
+
+(defun prime-factors-mult (n)
+  (mapcar #'reverse (encode (prime-factors n))))

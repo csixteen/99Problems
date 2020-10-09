@@ -200,3 +200,6 @@
 (define-test test-prime-factors
   (assert-equal '(3 3 5 7) (nn:prime-factors 315))
   (assert-equal '(2 47) (nn:prime-factors 94)))
+
+(define-test test-prime-factors-mult
+  (assert-equal '((3 2) (5 1) (7 1)) (nn:prime-factors-mult 315)))
