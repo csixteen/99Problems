@@ -203,3 +203,7 @@
 
 (define-test test-prime-factors-mult
   (assert-equal '((3 2) (5 1) (7 1)) (nn:prime-factors-mult 315)))
+
+(define-test test-totient-phi-improved
+  (assert-equal 1 (nn:totient-phi-improved 1))
+  (assert-equal 4 (nn:totient-phi-improved 10)))

@@ -359,3 +359,13 @@
 
 (defun prime-factors-mult (n)
   (mapcar #'reverse (encode (prime-factors n))))
+
+
+;; Problem 37 - Calculate Euler's Totient function phi (improved
+
+(defun totient-phi-improved (m)
+  (apply #'* (mapcar #'(lambda (factor)
+                         (let ((p (first factor))
+                               (m (second factor)))
+                           (* (1- p) (expt p (1- m)))))
+                     (prime-factors-mult m))))

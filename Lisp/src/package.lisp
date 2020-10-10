@@ -58,4 +58,5 @@
            :coprime
            :totient-phi
            :prime-factors
-           :prime-factors-mult))
+           :prime-factors-mult
+           :totient-phi-improved))
