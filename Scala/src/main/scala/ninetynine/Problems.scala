@@ -1,6 +1,7 @@
 package ninetynine
 
 import scala.collection.immutable.AbstractSeq
+import scala.math.pow
 import scala.util.{Random,Try}
 
 
@@ -460,4 +461,12 @@ object Problems {
 
   def primeFactorsMult(n: Int): List[(Int,Int)] =
     encode(primeFactors(n)).map { case (a,b) => (b,a) }
+
+
+  //----------------------------------------------------------------
+
+  /** Problem 37 - Calculate Euler's totient function phi (improved) */
+
+  def totientPhiImproved(m: Int): Double =
+    primeFactorsMult(m).map { case (p,m) => (p-1) * pow(p, m-1) }.product
 }
