@@ -140,7 +140,6 @@ object Problems {
   //------------------------------------------------------
   
   /** Problem 9 - pack consecutive duplicates into sublists */
-
   def pack[A](as: List[A]): List[List[A]] =
     as match {
       case Nil => List()
@@ -154,7 +153,6 @@ object Problems {
   //-------------------------------------------------------
 
   /** Problem 10 - Run-length encoding of a list */
-
   def encode[A](as: List[A]): List[(Int, A)] =
     pack(as).map(g => (g.length, g.head))
 
@@ -162,7 +160,6 @@ object Problems {
   //-------------------------------------------------------
 
   /** Problem 11 - Run-length encoding modified */
-
   def encodeModified[A](as: List[A]): List[ListItem[A]] =
     pack(as).map(g => {
       if (g.length == 1) Single(g.head)
@@ -173,7 +170,6 @@ object Problems {
   //-------------------------------------------------------
 
   /** Problem 12 - Decode modified run-length */
-
   def decodeModified[A](as: List[ListItem[A]]): List[A] =
     as.flatMap(a => a match {
         case Single(s) => List(s)
@@ -184,7 +180,6 @@ object Problems {
   //-------------------------------------------------------
 
   /** Problem 14 - Duplicate the elements in a list */
-
   def duplicate[A](as: List[A]): List[A] =
     as.flatMap(x => List(x, x))
 
@@ -195,7 +190,6 @@ object Problems {
    * Problem 15 - Replicate the elements of a list a given
    * number of times.
    */
-
   def replicate[A](as: List[A], n: Int): List[A] =
     as.flatMap(List.fill(n)(_))
 
@@ -203,7 +197,6 @@ object Problems {
   //--------------------------------------------------------
 
   /** Problem 16 - drop every N elements of a list */
-
   def dropEvery[A](as: List[A], n: Int): List[A] =
     as match {
       case Nil => Nil
@@ -214,7 +207,6 @@ object Problems {
   //--------------------------------------------------------
 
   /** Problem 17 - Split a list into two parts */
-
   def splitAt[A](as: List[A], n: Int): (List[A], List[A]) =
     (as.take(n), as.drop(n))
 
@@ -222,7 +214,6 @@ object Problems {
   //--------------------------------------------------------
 
   /** Problem 18 - Extract a slice from a list */
-
   def slice[A](as: List[A], start: Int, end: Int): Either[String,List[A]] =
     if (start < 1 || start > end) Left("Invalid values for start and end")
     else Right(as drop(start-1) take(end-start+1))
@@ -231,7 +222,6 @@ object Problems {
   //--------------------------------------------------------
 
   /** Problem 19 - Rotate a list N places to the left */
-
   def rotate[A](as: List[A], n: Int): List[A] = {
     if (as.isEmpty) Nil
     else {
@@ -244,7 +234,6 @@ object Problems {
   //---------------------------------------------------------
 
   /** Problem 20 - Remove the kth element of a list */
-
   def removeAt[A](as: List[A], n: Int): Option[(A, List[A])] = 
     if (n < 1 || n > as.length) None
     else {
@@ -256,7 +245,6 @@ object Problems {
   //----------------------------------------------------------
 
   /** Problem 21 - Insert an element at a given position in a list */
-
   def insertAt[A](as: List[A], a: A, n: Int): List[A] =
     as.take(n-1) ::: List(a) ::: as.drop(n-1)
 
@@ -264,7 +252,6 @@ object Problems {
   //----------------------------------------------------------
 
   /** Problem 22 - Create a list containing all integers within a given range */
-
   def range(start: Int, end: Int): List[Int] = {
     @annotation.tailrec
     def go(a: Int, b: Int, acc: List[Int]): List[Int] =
@@ -278,7 +265,6 @@ object Problems {
   //-----------------------------------------------------------
 
   /** Problem 23 - Extract a given number of randomly selected elements from a list */
-
   def rndSelect[A](as: List[A], n: Int): List[A] = {
     if (n == 0 || as.isEmpty) List()
     else {
@@ -294,7 +280,6 @@ object Problems {
   //------------------------------------------------------------
 
   /** Problem 24 - Draw N different random numbers from the set 1..M */
-
   def diffSelect(n: Int, m: Int): List[Int] =
     rndSelect(range(1, m), n)
 
@@ -302,7 +287,6 @@ object Problems {
   //-----------------------------------------------------------
 
   /** Problem 25 - generate a random permutation of the elements of a list */
-
   def rndPermutation[A](as: List[A]): List[A] =
     as match {
       case Nil => Nil
@@ -321,7 +305,6 @@ object Problems {
    * Problem 26 - Generate the combinations of K distinct objects chosen
    * from the N elements of a list.
    */
-
   def combinations[A](k: Int, as: List[A]): List[List[A]] = {
     if (k == 0) List(List())
     else
@@ -338,11 +321,9 @@ object Problems {
 
   //-------------------------------------------------------------
 
-  /** Problem 27 - Group the elements of a set into disjoint subsets */
-
   // This version of `combinations` yields not only the elements we selected,
   // but also the elements that we haven't selected.
-  def combModified[A](k: Int, as: List[A]): List[(List[A], List[A])] = {
+  private def combModified[A](k: Int, as: List[A]): List[(List[A], List[A])] = {
     if (k == 0) List((List(), as))
     else
       as match {
@@ -355,6 +336,7 @@ object Problems {
       }
   }
 
+  /** Problem 27 - Group the elements of a set into disjoint subsets */
   def group[A](k: List[Int], as: List[A]): List[List[List[A]]] = {
     (k, as) match {
       case (Nil, _) => List(List())
@@ -371,13 +353,11 @@ object Problems {
   /** Problem 28 - sorting a list of lists according to length of sublists */
 
   // a-) Sorting a list of lists according to the length of the sublists
-
   def lengthSort[A](as: List[String]): List[String] =
     as.sortBy(_.length)
 
   // b-) Sorting a list of lists according to the frequency of the length
   // of the sublists
-
   def lengthFreqSort[A](as: List[String]): List[String] = {
     val lengths = as.groupBy(_.length)
     val freqs = lengths.values.groupBy(_.length)
@@ -390,13 +370,12 @@ object Problems {
   ////                Arithmetic
 
 
-  /** Problem 31 - Determine whether a given integer number is prime. */
-
   private def sieve(as: LazyList[Int]): LazyList[Int] =
     as.head #:: sieve(as.tail).filter(x => x % as.head != 0)
 
   val primes: LazyList[Int] = sieve(LazyList.from(2))
 
+  /** Problem 31 - Determine whether a given integer number is prime. */
   def isPrime(a: Int): Boolean =
     a > 1 && !primes.takeWhile(_ <= math.sqrt(a)).exists(a % _ == 0)
 
@@ -407,7 +386,6 @@ object Problems {
    * Problem 32 - Determine the greatest common divisor of two positive 
    * integer numbers.
    */
-
   def gcd(a: Int, b: Int): Int =
     if (b == 0) math.abs(a)
     else gcd(b, a % b)
@@ -419,25 +397,18 @@ object Problems {
    * Problem 33 - Determine whether two positive integer numbers are coprime.
    * Two numbers are coprime if their greatest common divisor equals 1.
    */
-
   def coprime(a: Int, b: Int): Boolean = 1 == gcd(a, b)
 
 
   //----------------------------------------------------------------
 
   /** Problem 34 - Calculate Euler's totient function phi(m) */
-
   def totientPhi(m: Int): Int =
     if (m == 1) 1
     else (1 to m).filter(coprime(_, m)).length
 
 
   //----------------------------------------------------------------
-
-  /**
-   * Problem 35 - Determine the prime factors of a given positive integer.
-   * Construct a flat list containing the prime factors in ascending order.
-   */
 
   @annotation.tailrec
   private def factors(n: Int, p: List[Int], acc: List[Int]): List[Int] = {
@@ -448,6 +419,10 @@ object Problems {
     }
   }
 
+  /**
+   * Problem 35 - Determine the prime factors of a given positive integer.
+   * Construct a flat list containing the prime factors in ascending order.
+   */
   def primeFactors(n: Int): List[Int] =
     factors(n, primes.takeWhile(_ <= n/2).reverse.toList, List())
 
@@ -458,7 +433,6 @@ object Problems {
    * Problem 36 - Determine the prime factors of a given positive integer
    * with their multiplicity.
    */
-
   def primeFactorsMult(n: Int): List[(Int,Int)] =
     encode(primeFactors(n)).map { case (a,b) => (b,a) }
 
@@ -466,7 +440,6 @@ object Problems {
   //----------------------------------------------------------------
 
   /** Problem 37 - Calculate Euler's totient function phi (improved) */
-
   def totientPhiImproved(m: Int): Double =
     primeFactorsMult(m).map { case (p,m) => (p-1) * pow(p, m-1) }.product
 
@@ -474,7 +447,6 @@ object Problems {
   //----------------------------------------------------------------
 
   /** Problem 39 - A list of prime numbers */
-
   def primesRange(a: Int, b: Int): List[Int] =
     primes.takeWhile(_ < b).dropWhile(_ < a).toList
 }
