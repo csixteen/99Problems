@@ -469,4 +469,12 @@ object Problems {
 
   def totientPhiImproved(m: Int): Double =
     primeFactorsMult(m).map { case (p,m) => (p-1) * pow(p, m-1) }.product
+
+
+  //----------------------------------------------------------------
+
+  /** Problem 39 - A list of prime numbers */
+
+  def primesRange(a: Int, b: Int): List[Int] =
+    primes.takeWhile(_ < b).dropWhile(_ < a).toList
 }

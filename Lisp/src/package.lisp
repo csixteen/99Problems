@@ -59,4 +59,5 @@
            :totient-phi
            :prime-factors
            :prime-factors-mult
-           :totient-phi-improved))
+           :totient-phi-improved
+           :primes-range))

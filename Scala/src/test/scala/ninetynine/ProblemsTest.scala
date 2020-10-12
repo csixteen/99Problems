@@ -233,4 +233,8 @@ class ProblemsTest extends AnyFunSuite {
     assert(Problems.totientPhiImproved(1) == 1)
     assert(Problems.totientPhiImproved(10) == 4)
   }
+
+  test("Problem 39 - primesRange") {
+    assert(Problems.primesRange(10, 20) == List(11, 13, 17, 19))
+  }
 }

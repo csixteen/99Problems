@@ -369,3 +369,9 @@
                                (m (second factor)))
                            (* (1- p) (expt p (1- m)))))
                      (prime-factors-mult m))))
+
+
+;; Problem 39 - A list of prime numbers
+
+(defun primes-range (a b)
+  (drop-while #'(lambda (x) (< x a)) (sieve-of-eratosthenes b)))
