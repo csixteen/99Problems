@@ -375,3 +375,19 @@
 
 (defun primes-range (a b)
   (drop-while #'(lambda (x) (< x a)) (sieve-of-eratosthenes b)))
+
+
+;; Problem 40 - Goldbach's conjecture
+
+(defun goldbach (n)
+  (labels ((gold (candidates left right target)
+                 (unless (>= left right)
+                   (let* ((lvalue (aref candidates left))
+                          (rvalue (aref candidates right))
+                          (res (+ lvalue rvalue)))
+                     (cond ((= res target) (values lvalue rvalue))
+                           ((> target res) (gold candidates (1+ left) right target))
+                           (t (gold candidates left (1- right) target)))))))
+    (let* ((primes (sieve-of-eratosthenes n))
+           (candidates (make-array (length primes) :initial-contents primes)))
+      (gold candidates 0 (1- (length primes)) n))))

@@ -449,4 +449,23 @@ object Problems {
   /** Problem 39 - A list of prime numbers */
   def primesRange(a: Int, b: Int): List[Int] =
     primes.takeWhile(_ < b).dropWhile(_ < a).toList
+
+
+  //----------------------------------------------------------------
+
+  /** Problem 40 - Goldbach's conjecture */
+
+  def goldbach(n: Int): (Int, Int) = {
+    @annotation.tailrec
+    def gold(candidates: List[Int], left: Int, right: Int, target: Int): (Int, Int) = {
+      target.compare(candidates(left) + candidates(right)) match {
+        case 0 => (candidates(left), candidates(right))
+        case 1 => gold(candidates, left+1, right, target)
+        case -1 => gold(candidates, left, right-1, target)
+      }
+    }
+
+    val p = primes.takeWhile(_ <= n).toList
+    gold(p, 0, p.length-1, n)
+  }
 }

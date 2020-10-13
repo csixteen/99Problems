@@ -210,3 +210,8 @@
 
 (define-test test-primes-range
   (assert-equal '(11 13 17 19) (nn:primes-range 10 20)))
+
+(define-test test-goldbach
+  (multiple-value-bind (a b) (nn:goldbach 28)
+    (assert-equal a 5)
+    (assert-equal b 23)))

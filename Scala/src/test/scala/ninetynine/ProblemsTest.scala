@@ -237,4 +237,8 @@ class ProblemsTest extends AnyFunSuite {
   test("Problem 39 - primesRange") {
     assert(Problems.primesRange(10, 20) == List(11, 13, 17, 19))
   }
+
+  test("Problem 40 - goldbach") {
+    assert(Problems.goldbach(28) == (5, 23))
+  }
 }
