@@ -385,9 +385,21 @@
                    (let* ((lvalue (aref candidates left))
                           (rvalue (aref candidates right))
                           (res (+ lvalue rvalue)))
-                     (cond ((= res target) (values lvalue rvalue))
+                     (cond ((= res target) (list lvalue rvalue))
                            ((> target res) (gold candidates (1+ left) right target))
                            (t (gold candidates left (1- right) target)))))))
     (let* ((primes (sieve-of-eratosthenes n))
            (candidates (make-array (length primes) :initial-contents primes)))
       (gold candidates 0 (1- (length primes)) n))))
+
+
+;; Problem 41 - Given a range of integers by its lower and upper limit, print a list of
+;; all even numbers and their Goldbach composition.
+
+(defun goldbach-list (a b &optional (p 1))
+  (let* ((numbers (remove-if-not #'evenp (range a b)))
+         (gb-list (mapcar #'goldbach numbers)))
+    (remove-if-not #'(lambda (pair)
+                       (and (not (null pair))
+                            (and (> (first pair) p) (> (second pair) p))))
+                   gb-list)))

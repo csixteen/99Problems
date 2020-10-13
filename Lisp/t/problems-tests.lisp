@@ -212,6 +212,12 @@
   (assert-equal '(11 13 17 19) (nn:primes-range 10 20)))
 
 (define-test test-goldbach
-  (multiple-value-bind (a b) (nn:goldbach 28)
-    (assert-equal a 5)
-    (assert-equal b 23)))
+  (let ((pair (nn:goldbach 28)))
+    (assert-equal 5 (first pair))
+    (assert-equal 23 (second pair))))
+
+(define-test test-goldbach-list
+  (assert-equal '((3 7) (5 7) (3 11) (3 13) (5 13) (3 17))
+                (nn:goldbach-list 9 20))
+  (assert-equal '((73 919) (61 1321) (67 1789) (61 1867))
+                (nn:goldbach-list 4 2000 50)))

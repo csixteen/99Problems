@@ -454,18 +454,37 @@ object Problems {
   //----------------------------------------------------------------
 
   /** Problem 40 - Goldbach's conjecture */
-
-  def goldbach(n: Int): (Int, Int) = {
+  def goldbach(n: Int): Either[String, (Int, Int)] = {
     @annotation.tailrec
-    def gold(candidates: List[Int], left: Int, right: Int, target: Int): (Int, Int) = {
-      target.compare(candidates(left) + candidates(right)) match {
-        case 0 => (candidates(left), candidates(right))
-        case 1 => gold(candidates, left+1, right, target)
-        case -1 => gold(candidates, left, right-1, target)
-      }
+    def gold(
+      candidates: List[Int], left: Int, right: Int, target: Int
+    ): Either[String, (Int, Int)] = {
+      if (left >= right) Left("left >= right")
+      else
+        target.compare(candidates(left) + candidates(right)) match {
+          case 0 => Right((candidates(left), candidates(right)))
+          case 1 => gold(candidates, left+1, right, target)
+          case -1 => gold(candidates, left, right-1, target)
+        }
     }
 
     val p = primes.takeWhile(_ <= n).toList
     gold(p, 0, p.length-1, n)
   }
+
+
+  //----------------------------------------------------------------
+
+  /** 
+   * Problem 41 - Given a range of integers by its lower and upper limit, print
+   * a list of all even numbers and their Goldbach composiion.
+   */
+  def goldbachList(a: Int, b: Int, p: Int = 1): List[Either[String, (Int, Int)]] =
+    (a to b)
+      .filter(_ % 2 == 0)
+      .map(goldbach(_)).toList
+      .filter{
+        case Right((x, y)) => (x > p) && (y > p)
+        case _ => false
+      }
 }

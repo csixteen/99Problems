@@ -61,4 +61,5 @@
            :prime-factors-mult
            :totient-phi-improved
            :primes-range
-           :goldbach))
+           :goldbach
+           :goldbach-list))
