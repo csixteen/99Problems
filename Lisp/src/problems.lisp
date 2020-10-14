@@ -403,3 +403,9 @@
                        (and (not (null pair))
                             (and (> (first pair) p) (> (second pair) p))))
                    gb-list)))
+
+
+;;;--------------------------------------------
+;;;
+;;;            Logic and Codes
+

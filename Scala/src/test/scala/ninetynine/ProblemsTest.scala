@@ -267,4 +267,30 @@ class ProblemsTest extends AnyFunSuite {
         Right((61, 1867)),
       ))
   }
+
+  test("Problem 46 - and/2") {
+    val andTable = 
+      List(
+        (false, false, false),
+        (false, true, false),
+        (true, false, false),
+        (true, true, true))
+
+    andTable.foreach {
+      case (a, b, expected) => assert(Problems.and(a, b) == expected)
+    }
+  }
+
+  test("Problem 46 - (and A (or A B))") {
+    val truthTable =
+      List(
+        (true, true, true),
+        (true, false, true),
+        (false, true, false),
+        (false, false, false))
+
+    truthTable.foreach {
+      case (a, b, expected) => assert(Problems.and(a, Problems.or(a, b)) == expected)
+    }
+  }
 }
