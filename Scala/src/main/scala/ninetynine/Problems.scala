@@ -487,4 +487,38 @@ object Problems {
         case Right((x, y)) => (x > p) && (y > p)
         case _ => false
       }
+
+
+  ////****************************************************
+  ////
+  ////              Logic and Codes
+
+  /**
+   * Problem 46 - Define the predicates and/2, or/2, nand/2, nor/2, xor/2,
+   * impl/2 and equ/2 (for logical equivalence) which succeed or fail
+   * according to the result of their respective operations.
+   */
+  def not(a: Boolean): Boolean =
+    a match {
+      case true => false
+      case false => true
+    }
+
+  def and(a: Boolean, b: Boolean): Boolean =
+    (a, b) match {
+      case (true, true) => true
+      case _ => false
+    }
+
+  def or(a: Boolean, b: Boolean): Boolean =
+    (a, b) match {
+      case (false, false) => false
+      case _ => true
+    }
+
+  def nand(a: Boolean, b: Boolean): Boolean = not(and(a, b))
+
+  def nor(a: Boolean, b: Boolean): Boolean = not(or(a, b))
+
+  def xor(a: Boolean, b: Boolean): Boolean = and(or(a, b), nand(a, b))
 }
