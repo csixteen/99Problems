@@ -62,4 +62,6 @@
            :totient-phi-improved
            :primes-range
            :goldbach
-           :goldbach-list))
+           :goldbach-list
+           ;; Logic and codes
+           :gray))

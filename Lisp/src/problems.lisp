@@ -409,3 +409,15 @@
 ;;;
 ;;;            Logic and Codes
 
+
+;; Problem 49 - Gray codes
+
+(defun gray (n)
+  (labels ((rec (i acc)
+                (cond ((= i 1) acc)
+                      (t (rec
+                           (1- i)
+                           (append
+                             (mapcar #'(lambda (x) (cons 0 x)) acc)
+                             (mapcar #'(lambda (x) (cons 1 x)) (reverse acc))))))))
+    (rec n '((0) (1)))))

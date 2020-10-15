@@ -456,20 +456,20 @@ object Problems {
   /** Problem 40 - Goldbach's conjecture */
   def goldbach(n: Int): Either[String, (Int, Int)] = {
     @annotation.tailrec
-    def gold(
+    def go(
       candidates: List[Int], left: Int, right: Int, target: Int
     ): Either[String, (Int, Int)] = {
       if (left >= right) Left("left >= right")
       else
         target.compare(candidates(left) + candidates(right)) match {
           case 0 => Right((candidates(left), candidates(right)))
-          case 1 => gold(candidates, left+1, right, target)
-          case -1 => gold(candidates, left, right-1, target)
+          case 1 => go(candidates, left+1, right, target)
+          case -1 => go(candidates, left, right-1, target)
         }
     }
 
     val p = primes.takeWhile(_ <= n).toList
-    gold(p, 0, p.length-1, n)
+    go(p, 0, p.length-1, n)
   }
 
 
@@ -521,4 +521,17 @@ object Problems {
   def nor(a: Boolean, b: Boolean): Boolean = not(or(a, b))
 
   def xor(a: Boolean, b: Boolean): Boolean = and(or(a, b), nand(a, b))
+
+
+  //----------------------------------------------------------------
+
+  /** Problem 49 - Gray codes */
+  def gray(n: Int): List[String] = {
+    @annotation.tailrec
+    def go(i: Int, acc: List[String]): List[String] =
+      if (i == 1) acc
+      else go(i-1, acc.map(_.prepended('0')) ::: acc.reverse.map(_.prepended('1')))
+
+    go(n, List("0", "1"))
+  }
 }

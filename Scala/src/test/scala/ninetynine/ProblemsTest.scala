@@ -293,4 +293,10 @@ class ProblemsTest extends AnyFunSuite {
       case (a, b, expected) => assert(Problems.and(a, Problems.or(a, b)) == expected)
     }
   }
+
+  test("Problem 49 - gray") {
+    assert(Problems.gray(1) == List("0", "1"))
+    assert(Problems.gray(2) == List("00", "01", "11", "10"))
+    assert(Problems.gray(3) == List("000", "001", "011", "010", "110", "111", "101", "100"))
+  }
 }

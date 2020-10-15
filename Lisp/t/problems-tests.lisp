@@ -221,3 +221,16 @@
                 (nn:goldbach-list 9 20))
   (assert-equal '((73 919) (61 1321) (67 1789) (61 1867))
                 (nn:goldbach-list 4 2000 50)))
+
+(define-test test-gray
+  (assert-equal '((0) (1)) (nn:gray 1))
+  (assert-equal '((0 0) (0 1) (1 1) (1 0)) (nn:gray 2))
+  (assert-equal '((0 0 0)
+                  (0 0 1)
+                  (0 1 1)
+                  (0 1 0)
+                  (1 1 0)
+                  (1 1 1)
+                  (1 0 1)
+                  (1 0 0))
+                (nn:gray 3)))
