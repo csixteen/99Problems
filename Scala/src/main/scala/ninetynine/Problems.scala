@@ -534,4 +534,38 @@ object Problems {
 
     go(n, List("0", "1"))
   }
+
+
+  //----------------------------------------------------------------
+
+  /** Problem 50 - Huffman codes */
+  def huffman(freqs: List[(Char, Int)]): List[(Char, String)] = {
+    val leafs = freqs.sortBy(_._2).map{ case (c, f) => (f, Leaf(c)) }
+    val tree = buildHTree(leafs)
+    serialize(tree).sortBy(_._1)
+  }
+
+  private def buildHTree(leafs: List[(Int, HTree[Char])]): HTree[Char] =
+    leafs match {
+      case List((_, t)) => t
+      case (f1, t1) :: (f2, t2) :: ls =>
+        buildHTree(
+          insertOrdered(ls, (f1+f2, Branch(t1, t2)))((a, b) => a._1 < b._1))
+    }
+
+  private def insertOrdered[A](as: List[A], elem: A)(fn: (A, A) => Boolean): List[A] =
+    as match {
+      case Nil => List(elem)
+      case x :: xs if (fn(elem, x)) => elem :: as
+      case x :: xs if (!fn(elem, x)) => x :: insertOrdered(xs, elem)(fn)
+    }
+
+  private def serialize(tree: HTree[Char]): List[(Char, String)] =
+    tree match {
+      case Leaf(x) => List((x, ""))
+      case Branch(l, r) =>
+        val left = serialize(l).map{ case (c, code) => (c, "0" + code)}
+        val right = serialize(r).map{ case (c, code) => (c, "1" + code)}
+        left ::: right
+    }
 }
