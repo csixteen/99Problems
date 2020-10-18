@@ -548,9 +548,10 @@ object Problems {
   private def buildHTree(leafs: List[(Int, HTree[Char])]): HTree[Char] =
     leafs match {
       case List((_, t)) => t
-      case (f1, t1) :: (f2, t2) :: ls =>
-        buildHTree(
-          insertOrdered(ls, (f1+f2, Branch(t1, t2)))((a, b) => a._1 < b._1))
+      case (f1, t1) :: (f2, t2) :: ls => {
+        val xs = insertOrdered(ls, (f1+f2, Branch(t1, t2)))((a, b) => a._1 < b._1)
+        buildHTree(xs)
+      }
     }
 
   private def insertOrdered[A](as: List[A], elem: A)(fn: (A, A) => Boolean): List[A] =
