@@ -421,3 +421,38 @@
                              (mapcar #'(lambda (x) (cons 0 x)) acc)
                              (mapcar #'(lambda (x) (cons 1 x)) (reverse acc))))))))
     (rec n '((0) (1)))))
+
+
+;; Problem 50 - Huffman codes
+
+(defun huffman (freqs)
+  "Takes a list of pairs (Char, Frequency) and returns a list
+  of pairs (Char, Huffman Code)"
+  (let* ((leafs (mapcar #'(lambda (p) (list (second p) (make-htree :elem (first p))))
+                        (sort freqs #'< :key #'second)))
+         (tree (build-htree leafs)))
+    (sort (serialize tree) #'char< :key #'first)))
+
+(defun build-htree (leafs)
+  "Takes a list of pairs (Frequency, Huffman Tree Leaf) and returns
+  a Huffman Tree"
+  (cond ((= 1 (length leafs))
+         (cadar leafs))
+        (t (destructuring-bind ((f1 t1) (f2 t2) . xs) leafs
+             (build-htree
+               (insert-by xs
+                          (list (+ f1 f2) (make-htree :left t1 :right t2))
+                          #'<
+                          :key #'car))))))
+
+(defun serialize (tree)
+  "Takes a Huffman Tree and returns a list of pairs (Char, Huffman Code)"
+  (cond ((not (null (htree-elem tree))) ;; It's a leaf
+         (list (list (htree-elem tree) "")))
+        (t (append
+             (mapcar #'(lambda (pair) (list (first pair)
+                                            (concatenate 'string "0" (second pair))))
+                     (serialize (htree-left tree)))
+             (mapcar #'(lambda (pair) (list (first pair)
+                                            (concatenate 'string "1" (second pair))))
+                     (serialize (htree-right tree)))))))

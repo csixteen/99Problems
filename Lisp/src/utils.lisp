@@ -57,3 +57,28 @@
 
 (defun list-length> (a b)
   (> (length a) (length b)))
+
+
+;; Huffman Tree
+
+(defstruct
+  (htree
+    (:print-function
+      (lambda (n s d)
+        (format s "#<~A (~A) (~A)>"
+                (htree-elem n)
+                (htree-left n)
+                (htree-right n)))))
+  (elem nil)
+  (left nil)
+  (right nil))
+
+(defun insert-by (ls elem pred &key key)
+  (cond ((null ls) (list elem))
+        ((funcall pred (funcall key elem) (funcall key (car ls)))
+         (cons elem ls))
+        (t (cons (car ls)
+                 (insert-by (cdr ls)
+                            elem
+                            pred
+                            :key key)))))

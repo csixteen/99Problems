@@ -234,3 +234,27 @@
                   (1 0 1)
                   (1 0 0))
                 (nn:gray 3)))
+
+(define-test test-insert-by
+  (assert-equal
+    '((a 5) (b 6) (c 7))
+    (nn:insert-by '((a 5) (c 7)) '(b 6) #'< :key #'second))
+  (assert-equal
+    '((a 5) (b 6) (c 7))
+    (nn:insert-by '((b 6) (c 7)) '(a 5) #'< :key #'second))
+  (assert-equal
+    '((a 5))
+    (nn:insert-by nil '(a 5) #'< :key #'second))
+  (assert-equal
+    '((a 5) (b 6) (c 7))
+    (nn:insert-by '((a 5) (b 6)) '(c 7) #'< :key #'second)))
+
+(define-test test-huffman
+  (assert-equal
+    '((#\a "0")
+      (#\b "101")
+      (#\c "100")
+      (#\d "111")
+      (#\e "1101")
+      (#\f "1100"))
+    (nn:huffman '((#\a 45) (#\b 13) (#\c 12) (#\d 16) (#\e 9) (#\f 5)))))

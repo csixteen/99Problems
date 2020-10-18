@@ -64,4 +64,6 @@
            :goldbach
            :goldbach-list
            ;; Logic and codes
-           :gray))
+           :gray
+           :huffman
+           :insert-by))
