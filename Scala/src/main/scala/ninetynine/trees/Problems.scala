@@ -48,7 +48,7 @@ object Problems {
   def construct(as: List[Int]): BTree[Int] =
     as.foldLeft(EmptyTree: BTree[Int])((acc, e) => add(e, acc))
 
-  private def add[A <% Ordered[A]](elem: A, tree: BTree[A]): BTree[A] =
+  private def add[A](elem: A, tree: BTree[A])(implicit ev: A => Ordered[A]): BTree[A] =
     tree match {
       case EmptyTree => Branch(elem, EmptyTree, EmptyTree)
       case y@Branch(x, l, r) =>

@@ -26,6 +26,7 @@ $ make scala
 - [Huffman Coding](https://en.wikipedia.org/wiki/Huffman_coding)
 - [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes)
 - [What are Scala context and view bounds](https://stackoverflow.com/questions/4465948/what-are-scala-context-and-view-bounds/4467012)
+- [Avoid Scala view bounds, they are deprecated](https://github.com/scala/scala/pull/2909)
 - [Simple explanation of Clojure protocols](https://stackoverflow.com/questions/4509782/simple-explanation-of-clojure-protocols/4513556#4513556)
 
 # LICENSE
