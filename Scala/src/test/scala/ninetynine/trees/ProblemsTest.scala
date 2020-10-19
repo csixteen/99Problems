@@ -40,4 +40,16 @@ class TreesTest extends AnyFunSuite {
         Branch('x', EmptyTree, EmptyTree)
       )))
   }
+
+  test("Problem 57 - construct") {
+    assert(Problems.construct(List(3, 2, 5, 7, 1)) ==
+      Branch(3,
+        Branch(2,
+          Branch(1, EmptyTree, EmptyTree),
+          EmptyTree,
+        ),
+        Branch(5,
+          EmptyTree,
+          Branch(7, EmptyTree, EmptyTree))))
+  }
 }

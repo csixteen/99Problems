@@ -40,4 +40,22 @@ object Problems {
       case Branch(_, l, r) => mirror(l, r)
       case _ => false
     }
+
+
+  //-------------------------------------------------------------
+
+  /** Problem 57 - Binary Search Trees */
+  def construct(as: List[Int]): BTree[Int] =
+    as.foldLeft(EmptyTree: BTree[Int])((acc, e) => add(e, acc))
+
+  private def add[A <% Ordered[A]](elem: A, tree: BTree[A]): BTree[A] =
+    tree match {
+      case EmptyTree => Branch(elem, EmptyTree, EmptyTree)
+      case y@Branch(x, l, r) =>
+        elem.compareTo(x) match {
+          case 0 => y
+          case 1 => Branch(x, l, add(elem, r))
+          case -1 => Branch(x, add(elem, l), r)
+        }
+    }
 }
