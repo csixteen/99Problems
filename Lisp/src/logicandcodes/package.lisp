@@ -20,17 +20,9 @@
 ; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ; SOFTWARE.
 
-(require :asdf)
-(asdf:load-system "ninety-nine/tests/arithmetic")
-(asdf:load-system "ninety-nine/tests/lists")
-(asdf:load-system "ninety-nine/tests/logicandcodes")
-
-
-(setq lisp-unit:*print-failures* t)
-(setq lisp-unit:*print-errors* t)
-
-
-#-xlisp-test
-(lisp-unit:run-tests :all :nn.tests.arithmetic)
-(lisp-unit:run-tests :all :nn.tests.lists)
-(lisp-unit:run-tests :all :nn.tests.lac)
+(uiop:define-package :ninety-nine.logicandcodes
+  (:nicknames :nn.lac)
+  (:use :cl)
+  (:export :gray
+           :huffman
+           :insert-by))

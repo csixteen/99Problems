@@ -1,4 +1,26 @@
-(in-package :ninety-nine)
+; MIT License
+; 
+; Copyright (c) 2020 Pedro Rodrigues
+; 
+; Permission is hereby granted, free of charge, to any person obtaining a copy
+; of this software and associated documentation files (the "Software"), to deal
+; in the Software without restriction, including without limitation the rights
+; to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+; copies of the Software, and to permit persons to whom the Software is
+; furnished to do so, subject to the following conditions:
+; 
+; The above copyright notice and this permission notice shall be included in all
+; copies or substantial portions of the Software.
+; 
+; THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+; IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+; FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+; AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+; LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+; SOFTWARE.
+
+(in-package :ninety-nine.lists)
 
 (defun flip (f)
   "Flips the parameters of a 2 argument function"
@@ -57,28 +79,3 @@
 
 (defun list-length> (a b)
   (> (length a) (length b)))
-
-
-;; Huffman Tree
-
-(defstruct
-  (htree
-    (:print-function
-      (lambda (n s d)
-        (format s "#<~A (~A) (~A)>"
-                (htree-elem n)
-                (htree-left n)
-                (htree-right n)))))
-  (elem nil)
-  (left nil)
-  (right nil))
-
-(defun insert-by (ls elem pred &key key)
-  (cond ((null ls) (list elem))
-        ((funcall pred (funcall key elem) (funcall key (car ls)))
-         (cons elem ls))
-        (t (cons (car ls)
-                 (insert-by (cdr ls)
-                            elem
-                            pred
-                            :key key)))))
