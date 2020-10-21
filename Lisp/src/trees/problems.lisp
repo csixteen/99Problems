@@ -20,19 +20,13 @@
 ; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ; SOFTWARE.
 
-(require :asdf)
-
-(mapcar #'(lambda (dir)
-            (asdf:load-system (concatenate 'string "ninety-nine/tests/" dir)))
-        '("arithmetic" "lists" "logicandcodes" "trees"))
+(in-package :ninety-nine.trees)
 
 
-(setq lisp-unit:*print-failures* t)
-(setq lisp-unit:*print-errors* t)
+;; Problem 54A - Check whether a given term represents a binary tree
 
-
-#-xlisp-test
-(lisp-unit:run-tests :all :nn.tests.arithmetic)
-(lisp-unit:run-tests :all :nn.tests.lists)
-(lisp-unit:run-tests :all :nn.tests.lac)
-(lisp-unit:run-tests :all :nn.tests.trees)
+(defun is-tree (tree)
+  (cond ((null tree) t)
+        ((or (not (listp tree)) (not (= 3 (length tree)))) nil)
+        (t (and (is-tree (second tree))
+                (is-tree (third tree))))))

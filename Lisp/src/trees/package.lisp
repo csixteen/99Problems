@@ -20,19 +20,7 @@
 ; OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 ; SOFTWARE.
 
-(require :asdf)
-
-(mapcar #'(lambda (dir)
-            (asdf:load-system (concatenate 'string "ninety-nine/tests/" dir)))
-        '("arithmetic" "lists" "logicandcodes" "trees"))
-
-
-(setq lisp-unit:*print-failures* t)
-(setq lisp-unit:*print-errors* t)
-
-
-#-xlisp-test
-(lisp-unit:run-tests :all :nn.tests.arithmetic)
-(lisp-unit:run-tests :all :nn.tests.lists)
-(lisp-unit:run-tests :all :nn.tests.lac)
-(lisp-unit:run-tests :all :nn.tests.trees)
+(uiop:define-package :ninety-nine.trees
+  (:nicknames :nn.trees)
+  (:use :cl)
+  (:export :is-tree))

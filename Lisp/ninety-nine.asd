@@ -55,6 +55,17 @@
                (:file "problems")
                (:file "utils")))
 
+(asdf:defsystem :ninety-nine/trees
+  :description "99 Lisp Problems (Trees)"
+  :author "Pedro Rodrigues <csixteen@protonmail.com>"
+  :license "MIT"
+  :version "0.1.0"
+  :depends-on (:uiop)
+  :pathname "src/trees/"
+  :serial t
+  :components ((:file "package")
+               (:file "problems")))
+
 (asdf:defsystem :ninety-nine/tests/arithmetic
   :description "99 Unit Tests (Arithmetic)"
   :author "Pedro Rodrigues <csixteen@protonmail.com>"
@@ -84,6 +95,17 @@
   :version "0.1.0"
   :depends-on (:lisp-unit :ninety-nine/logicandcodes)
   :pathname "t/logicandcodes/"
+  :serial t
+  :components ((:file "package")
+               (:file "problems-tests")))
+
+(asdf:defsystem :ninety-nine/tests/trees
+  :description "99 Unit Tests (Trees)"
+  :author "Pedro Rodrigues <csixteen@protonmail.com>"
+  :license "MIT"
+  :version "0.1.0"
+  :depends-on (:lisp-unit :ninety-nine/trees)
+  :pathname "t/trees/"
   :serial t
   :components ((:file "package")
                (:file "problems-tests")))
