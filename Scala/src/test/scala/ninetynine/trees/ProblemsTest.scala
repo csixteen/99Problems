@@ -27,6 +27,15 @@ import ninetynine.trees._
 
 
 class TreesTest extends AnyFunSuite {
+  test("Problem 55 - cbalTree") {
+    assert(Problems.cbalTree(0) == List(EmptyTree))
+    assert(Problems.cbalTree(1) == List(Branch('x', EmptyTree, EmptyTree)))
+    assert(Problems.cbalTree(2) ==
+      List(
+        Branch('x', EmptyTree, Branch('x', EmptyTree, EmptyTree)),
+        Branch('x', Branch('x', EmptyTree, EmptyTree), EmptyTree)))
+  }
+
   test("Problem 56 - symmetric") {
     assert(!Problems.symmetric(
       Branch('x',
@@ -51,5 +60,22 @@ class TreesTest extends AnyFunSuite {
         Branch(5,
           EmptyTree,
           Branch(7, EmptyTree, EmptyTree))))
+  }
+
+  test("Problem 58 - symCbalTrees") {
+    assert(Problems.symCbalTrees(5) ==
+      List(
+        Branch(
+          'x',
+          Branch('x', EmptyTree, Branch('x', EmptyTree, EmptyTree)),
+          Branch('x', Branch('x', EmptyTree, EmptyTree), EmptyTree),
+        ),
+        Branch(
+          'x',
+          Branch('x', Branch('x', EmptyTree, EmptyTree), EmptyTree),
+          Branch('x', EmptyTree, Branch('x', EmptyTree, EmptyTree)),
+        ),
+      )
+    )
   }
 }

@@ -26,6 +26,22 @@ package ninetynine.trees
 
 
 object Problems {
+  /** Problem 55 - Construct completely balanced binary trees */
+  def cbalTree(n: Int): List[BTree[Char]] = {
+    if (n == 0) List(EmptyTree)
+    else {
+      val (q, r) = ((n-1) / n, (n-1) % 2)
+      for {
+        i <- (q to q+r).toList
+        left <- cbalTree(i)
+        right <- cbalTree(n-i-1)
+      } yield Branch('x', left, right)
+    }
+  }
+
+
+  //-------------------------------------------------------------
+
   /** Problem 56 - Symmetric binary trees */
   def mirror[A](a: BTree[A], b: BTree[A]): Boolean =
     (a, b) match {
@@ -57,5 +73,23 @@ object Problems {
           case 1 => Branch(x, l, add(elem, r))
           case -1 => Branch(x, add(elem, l), r)
         }
+    }
+
+
+  //-------------------------------------------------------------
+
+  /**
+   * Problem 58 - Generate-and-test paradigm. Apply the generate-and-test
+   * paradigm to construct all symmetric, completely balanced binary trees
+   * with a given number of nodes.
+   */
+  def symCbalTrees(n: Int): List[BTree[Char]] =
+    if (n % 2 == 0) Nil
+    else cbalTree(n/2).map(t => Branch('x', t, reverseTree(t)))
+
+  private def reverseTree[A](t: BTree[A]): BTree[A] =
+    t match {
+      case EmptyTree => EmptyTree
+      case Branch(v, l, r) => Branch(v, reverseTree(r), reverseTree(l))
     }
 }
