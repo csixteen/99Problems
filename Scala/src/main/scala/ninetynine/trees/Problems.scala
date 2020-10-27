@@ -30,7 +30,7 @@ object Problems {
   def cbalTree(n: Int): List[BTree[Char]] = {
     if (n == 0) List(EmptyTree)
     else {
-      val (q, r) = ((n-1) / n, (n-1) % 2)
+      val (q, r) = ((n-1) / 2, (n-1) % 2)
       for {
         i <- (q to q+r).toList
         left <- cbalTree(i)
