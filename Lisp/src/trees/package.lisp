@@ -22,5 +22,7 @@
 
 (uiop:define-package :ninety-nine.trees
   (:nicknames :nn.trees)
-  (:use :cl)
-  (:export :is-tree))
+  (:use :cl
+        :nn.lists)
+  (:export :is-tree
+           :cbal-tree))

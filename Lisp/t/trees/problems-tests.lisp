@@ -24,3 +24,10 @@
 (define-test test-is-tree
   (assert-true (nn.trees:is-tree '(a (b nil nil) nil)))
   (assert-false (nn.trees:is-tree '(a (b nil nil)))))
+
+(define-test test-cbal-tree
+  (assert-equal '(nil) (nn.trees:cbal-tree 0))
+  (assert-equal '((1 nil nil)) (nn.trees:cbal-tree 1))
+  (assert-equal '((1 nil (1 nil nil))
+                  (1 (1 nil nil) nil))
+                (nn.trees:cbal-tree 2)))

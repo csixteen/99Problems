@@ -30,3 +30,18 @@
         ((or (not (listp tree)) (not (= 3 (length tree)))) nil)
         (t (and (is-tree (second tree))
                 (is-tree (third tree))))))
+
+
+;; Problem 55 - Construct completely balanced binary trees
+
+(defun cbal-tree (n)
+  (if (zerop n)
+    '(nil)
+    (let ((q (floor (/ (1- n) 2)))
+          (r (mod (1- n) 2)))
+      (mapcan #'(lambda (i)
+                  (mapcan #'(lambda (left)
+                              (mapcar #'(lambda (right) (list 1 left right))
+                                      (cbal-tree (1- (- n i)))))
+                          (cbal-tree i)))
+              (range q (+ q r))))))

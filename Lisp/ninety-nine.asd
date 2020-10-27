@@ -60,7 +60,7 @@
   :author "Pedro Rodrigues <csixteen@protonmail.com>"
   :license "MIT"
   :version "0.1.0"
-  :depends-on (:uiop)
+  :depends-on (:uiop :ninety-nine/lists)
   :pathname "src/trees/"
   :serial t
   :components ((:file "package")
