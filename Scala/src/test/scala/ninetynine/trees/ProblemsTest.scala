@@ -28,9 +28,9 @@ import ninetynine.trees._
 
 class TreesTest extends AnyFunSuite {
   test("Problem 55 - cbalTree") {
-    assert(Problems.cbalTree(0) == List(EmptyTree))
-    assert(Problems.cbalTree(1) == List(Branch('x', EmptyTree, EmptyTree)))
-    assert(Problems.cbalTree(2) ==
+    assert(Problems.cbalTree(0, 'x') == List(EmptyTree))
+    assert(Problems.cbalTree(1, 'x') == List(Branch('x', EmptyTree, EmptyTree)))
+    assert(Problems.cbalTree(2, 'x') ==
       List(
         Branch('x', EmptyTree, Branch('x', EmptyTree, EmptyTree)),
         Branch('x', Branch('x', EmptyTree, EmptyTree), EmptyTree)))
@@ -63,7 +63,7 @@ class TreesTest extends AnyFunSuite {
   }
 
   test("Problem 58 - symCbalTrees") {
-    assert(Problems.symCbalTrees(5) ==
+    assert(Problems.symCbalTrees(5, 'x') ==
       List(
         Branch(
           'x',
@@ -75,6 +75,22 @@ class TreesTest extends AnyFunSuite {
           Branch('x', Branch('x', EmptyTree, EmptyTree), EmptyTree),
           Branch('x', EmptyTree, Branch('x', EmptyTree, EmptyTree)),
         ),
+      )
+    )
+  }
+
+  test("Problem 59 - hbalTree") {
+    assert(Problems.hbalTree(3, 'x').take(3) ==
+      List(
+        Branch('x',
+          Branch('x', EmptyTree, EmptyTree),
+          Branch('x', EmptyTree, Branch('x', EmptyTree, EmptyTree))),
+        Branch('x',
+          Branch('x', EmptyTree, EmptyTree),
+          Branch('x', Branch('x', EmptyTree, EmptyTree), Branch('x', EmptyTree, EmptyTree))),
+        Branch('x',
+          Branch('x', EmptyTree, EmptyTree),
+          Branch('x', Branch('x', EmptyTree, EmptyTree), EmptyTree)),
       )
     )
   }

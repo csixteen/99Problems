@@ -27,15 +27,15 @@ package ninetynine.trees
 
 object Problems {
   /** Problem 55 - Construct completely balanced binary trees */
-  def cbalTree(n: Int): List[BTree[Char]] = {
+  def cbalTree[A](n: Int, elem: A): List[BTree[A]] = {
     if (n == 0) List(EmptyTree)
     else {
       val (q, r) = ((n-1) / 2, (n-1) % 2)
       for {
         i <- (q to q+r).toList
-        left <- cbalTree(i)
-        right <- cbalTree(n-i-1)
-      } yield Branch('x', left, right)
+        left <- cbalTree(i, elem)
+        right <- cbalTree(n-i-1, elem)
+      } yield Branch(elem, left, right)
     }
   }
 
@@ -83,13 +83,29 @@ object Problems {
    * paradigm to construct all symmetric, completely balanced binary trees
    * with a given number of nodes.
    */
-  def symCbalTrees(n: Int): List[BTree[Char]] =
+  def symCbalTrees[A](n: Int, elem: A): List[BTree[A]] =
     if (n % 2 == 0) Nil
-    else cbalTree(n/2).map(t => Branch('x', t, reverseTree(t)))
+    else cbalTree(n/2, elem).map(t => Branch(elem, t, reverseTree(t)))
 
   private def reverseTree[A](t: BTree[A]): BTree[A] =
     t match {
       case EmptyTree => EmptyTree
       case Branch(v, l, r) => Branch(v, reverseTree(r), reverseTree(l))
+    }
+
+
+  //-------------------------------------------------------------
+
+  /** Problem 59 - Construct height-balanced binary trees */
+  def hbalTree[A](n: Int, elem: A): List[BTree[A]] =
+    n match {
+      case 0 => List(EmptyTree)
+      case 1 => List(Branch(elem, EmptyTree, EmptyTree))
+      case n =>
+        for {
+          (l, r) <- List((n-2, n-1), (n-1, n-1), (n-1, n-2))
+          left <- hbalTree(l, elem)
+          right <- hbalTree(r, elem)
+        } yield Branch(elem, left, right)
     }
 }
