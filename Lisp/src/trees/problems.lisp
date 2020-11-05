@@ -45,3 +45,16 @@
                                       (cbal-tree (1- (- n i)))))
                           (cbal-tree i)))
               (range q (+ q r))))))
+
+
+;; Problem 56 - Symmetric binary trees
+
+(defun mirror (a b)
+  (cond ((and (null a) (null b)) t)
+        ((or (null a) (null b)) nil)
+        (t (and (mirror (second a) (third b))
+                (mirror (third a) (second b))))))
+
+(defun symmetric (tree)
+  (or (null tree)
+      (mirror (second tree) (third tree))))

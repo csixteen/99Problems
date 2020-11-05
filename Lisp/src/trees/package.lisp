@@ -25,4 +25,6 @@
   (:use :cl
         :nn.lists)
   (:export :is-tree
-           :cbal-tree))
+           :cbal-tree
+           :mirror
+           :symmetric))

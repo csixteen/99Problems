@@ -31,3 +31,12 @@
   (assert-equal '((1 nil (1 nil nil))
                   (1 (1 nil nil) nil))
                 (nn.trees:cbal-tree 2)))
+
+(define-test test-mirror
+  (assert-true (nn.trees:mirror nil nil))
+  (assert-false (nn.trees:mirror nil '(1 nil nil))))
+
+(define-test test-symmetric
+  (assert-false (nn.trees:symmetric '(1 (1 nil nil) nil)))
+  (assert-true (nn.trees:symmetric nil))
+  (assert-true (nn.trees:symmetric '(1 (1 nil nil) (1 nil nil)))))
