@@ -1,5 +1,12 @@
 structure Lists =
-  struct
+struct
+  datatype 'a nestedList = L of 'a
+                         | N of 'a nestedList list;
+
+  local
+    fun append ([], ys)    = ys
+      | append (x::xs, ys) = x :: append (xs, ys);
+  in
 
     (* Find the last box of a list *)
     fun myLast lst =
@@ -36,4 +43,11 @@ structure Lists =
     (* Find out whether a list is a palidrome *)
     fun isPalindrome lst = lst = reverse lst;
 
+    (*
+    * Flatten a nested list structure. Since lists in StandardML
+    * are homogeneous, we need to define a nestedList datatype.
+    * *)
+    fun flatten (L x)  = [x]
+      | flatten (N xs) = List.concat (map flatten xs);
   end
+end
