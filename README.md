@@ -1,6 +1,6 @@
 # 99 Problems
 
-My solutions to 99 Problems. This is work in progress and my functional languages playground. Every time I add a new language, I'll try to setup a proper project as well as unit testing.
+My solutions to 99 Problems. This is work in progress and my functional languages playground.
 
 # Dependencies
 
