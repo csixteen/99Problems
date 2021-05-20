@@ -29,3 +29,6 @@ fun reverse lst =
   in
     aux (lst, [])
   end;
+
+(* Find out whether a list is a palidrome *)
+fun isPalindrome lst = lst = reverse lst;
