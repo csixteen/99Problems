@@ -1,0 +1,7 @@
+Library
+  structure Lists
+is
+  $/basis.cm
+  $/smlnj-lib.cm
+
+  src/lists.sml
