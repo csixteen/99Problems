@@ -4,8 +4,8 @@ struct
                          | N of 'a nestedList list;
 
   local
-    fun append ([], ys)    = ys
-      | append (x::xs, ys) = x :: append (xs, ys);
+    fun append [] ys      = ys
+      | append (x::xs) ys = x :: append xs ys;
   in
 
     (* Find the last box of a list *)
@@ -24,9 +24,9 @@ struct
          | _::xs    => myButLast xs;
 
     (* Find the kth element of a list. First index is 1. *)
-    fun elementAt ([], n)    = NONE
-      | elementAt (x::_, 1)  = SOME x
-      | elementAt (x::xs, n) = elementAt (xs, n-1);
+    fun elementAt [] n      = NONE
+      | elementAt (x::_) 1  = SOME x
+      | elementAt (x::xs) n = elementAt xs (n-1);
 
     (* Find the number of elements of a list. *)
     fun myLength []      = 0
@@ -34,10 +34,10 @@ struct
 
     (* Reverse a list *)
     fun reverse lst =
-      let fun aux ([], acc)    = acc
-            | aux (x::xs, acc) = aux (xs, x::acc)
+      let fun aux [] acc      = acc
+            | aux (x::xs) acc = aux xs (x::acc)
       in
-        aux (lst, [])
+        aux lst []
       end;
 
     (* Find out whether a list is a palidrome *)
