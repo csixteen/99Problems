@@ -4,8 +4,15 @@ struct
                          | N of 'a nestedList list;
 
   local
-    fun append [] ys      = ys
-      | append (x::xs) ys = x :: append xs ys;
+    fun takeWhile [] p      = []
+      | takeWhile (x::xs) p = if p x
+                              then x :: takeWhile xs p
+                              else [];
+
+    fun dropWhile [] p      = []
+      | dropWhile (x::xs) p = if p x
+                              then dropWhile xs p
+                              else x::xs;
   in
 
     (* Find the last box of a list *)
@@ -56,5 +63,10 @@ struct
       | compress (x::y::xs) = if x = y
                               then compress (y::xs)
                               else x :: compress (y::xs);
+
+    (* Pack consecutive duplicates of list elements into sublists. *)
+    fun pack [] = []
+      | pack (x::xs) =
+        (x::takeWhile xs (fn y => y = x)) :: pack (dropWhile xs (fn y => y = x));
   end
 end
