@@ -51,10 +51,10 @@ struct
       | flatten (N xs) = List.concat (map flatten xs);
 
     (* Eliminate consecutive duplicates of list elements. *)
-  fun compress []         = []
-    | compress (x::[])    = [x]
-    | compress (x::y::xs) = if x = y
-                            then compress (y::xs)
-                            else x :: compress (y::xs);
+    fun compress []         = []
+      | compress (x::[])    = [x]
+      | compress (x::y::xs) = if x = y
+                              then compress (y::xs)
+                              else x :: compress (y::xs);
   end
 end
