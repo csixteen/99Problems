@@ -1,3 +1,6 @@
+infixr !>
+fun f !> x = f x
+
 structure Lists =
 struct
   datatype 'a nestedList = L of 'a
@@ -7,15 +10,22 @@ struct
                        | M of int * 'a;
 
   local
-    fun takeWhile [] p      = []
-      | takeWhile (x::xs) p = if p x
-                              then x :: takeWhile xs p
-                              else [];
+      fun take [] n = []
+        | take (x::xs) 0 = []
+        | take (x::xs) n = x :: take xs (n-1);
+      
+      fun takeWhile [] p      = []
+        | takeWhile (x::xs) p = if p x
+                                then x :: takeWhile xs p
+                                else [];
 
-    fun dropWhile [] p      = []
-      | dropWhile (x::xs) p = if p x
-                              then dropWhile xs p
-                              else x::xs;
+      fun dropWhile [] p      = []
+        | dropWhile (x::xs) p = if p x
+                                then dropWhile xs p
+                                else x::xs;
+
+      fun repeat x 0 = []
+        | repeat x n = x :: repeat x (n-1); 
   in
 
     (* 1 - Find the last box of a list *)
@@ -83,6 +93,16 @@ struct
                   | x::xs => M (length g, x)
         in
             map enc (pack lst)
+        end;
+
+    (* 12 - Decode a run-length encoded list. *)
+    fun decode lst =
+        let
+            fun dec e = case e of
+                            S x => [x]
+                          | M (n, x) => repeat x n
+        in
+            List.concat !> map dec lst
         end;
   end
 end
