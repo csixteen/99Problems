@@ -24,8 +24,8 @@ struct
                                 then dropWhile xs p
                                 else x::xs;
 
-      fun repeat x 0 = []
-        | repeat x n = x :: repeat x (n-1); 
+      fun repeat 0 x = []
+        | repeat n x = x :: repeat (n-1) x;
   in
 
     (* 1 - Find the last box of a list *)
@@ -100,9 +100,16 @@ struct
         let
             fun dec e = case e of
                             S x => [x]
-                          | M (n, x) => repeat x n
+                          | M (n, x) => repeat n x
         in
             List.concat !> map dec lst
         end;
+
+    (* 14 - Duplicate the elements of a list. *)
+    fun duplicate [] = []
+      | duplicate (x::xs) = x :: x :: duplicate xs;
+
+    (* 15 - Replicate the elements of a list a given number of times. *)
+    fun replicate n = List.concat o map (repeat n);
   end
 end
