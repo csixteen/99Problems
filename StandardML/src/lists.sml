@@ -119,5 +119,8 @@ struct
     (* 16 - Drop every N'th element from a list. *)
     fun dropEvery n [] = []
       | dropEvery n xs = take (n-1) xs @ dropEvery n (drop n xs);
+
+    (* 17 - Split a list into two parts; the length of the first part is given. *)
+    fun splitAt n xs = [take n xs, drop n xs];
   end
 end
