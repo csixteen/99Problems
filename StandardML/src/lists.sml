@@ -10,18 +10,22 @@ struct
                        | M of int * 'a;
 
   local
-      fun take [] n = []
-        | take (x::xs) 0 = []
-        | take (x::xs) n = x :: take xs (n-1);
+      fun take n []      = []
+        | take 0 (x::xs) = []
+        | take n (x::xs) = x :: take (n-1) xs;
       
-      fun takeWhile [] p      = []
-        | takeWhile (x::xs) p = if p x
-                                then x :: takeWhile xs p
+      fun takeWhile p []      = []
+        | takeWhile p (x::xs) = if p x
+                                then x :: takeWhile p xs
                                 else [];
 
-      fun dropWhile [] p      = []
-        | dropWhile (x::xs) p = if p x
-                                then dropWhile xs p
+      fun drop n []      = []
+        | drop 0 (x::xs) = x::xs
+        | drop n (x::xs) = drop (n-1) xs;
+
+      fun dropWhile p []      = []
+        | dropWhile p (x::xs) = if p x
+                                then dropWhile p xs
                                 else x::xs;
 
       fun repeat 0 x = []
@@ -80,7 +84,7 @@ struct
     (* 9 - Pack consecutive duplicates of list elements into sublists. *)
     fun pack [] = []
       | pack (x::xs) =
-        (x::takeWhile xs (fn y => y = x)) :: pack (dropWhile xs (fn y => y = x));
+        (x::takeWhile (fn y => y = x) xs) :: pack (dropWhile (fn y => y = x) xs);
 
     (* 10 - Run-length encoding of a list. *)
     fun encode xs = map (fn x => (length x, hd x)) (pack xs);
@@ -111,5 +115,9 @@ struct
 
     (* 15 - Replicate the elements of a list a given number of times. *)
     fun replicate n = List.concat o map (repeat n);
+
+    (* 16 - Drop every N'th element from a list. *)
+    fun dropEvery n [] = []
+      | dropEvery n xs = take (n-1) xs @ dropEvery n (drop n xs);
   end
 end
