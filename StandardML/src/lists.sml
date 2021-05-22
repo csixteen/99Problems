@@ -3,6 +3,9 @@ struct
   datatype 'a nestedList = L of 'a
                          | N of 'a nestedList list;
 
+  datatype 'a listItem = S of 'a
+                       | M of int * 'a;
+
   local
     fun takeWhile [] p      = []
       | takeWhile (x::xs) p = if p x
@@ -71,5 +74,15 @@ struct
 
     (* 10 - Run-length encoding of a list. *)
     fun encode xs = map (fn x => (length x, hd x)) (pack xs);
+
+    (* 11 - Modified run-length encoding. *)
+    fun encodeModified lst =
+        let fun enc g =
+                case g of
+                    x::[] => S x
+                  | x::xs => M (length g, x)
+        in
+            map enc (pack lst)
+        end;
   end
 end
