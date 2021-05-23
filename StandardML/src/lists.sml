@@ -133,5 +133,8 @@ struct
         in
             right @ left
         end;
+
+    (* 20 - Remove the K'th element from a list. *)
+    fun removeAt n xs = take (n-1) xs @ drop n xs;
   end
 end
