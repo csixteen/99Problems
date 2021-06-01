@@ -1,0 +1,3 @@
+require {
+  github.com/diku-dk/sml-random 0.1.0 #8b329d10b0df570da087f9e15f3c829c9a1d74c2
+}

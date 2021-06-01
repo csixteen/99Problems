@@ -93,7 +93,8 @@ struct
     fun encodeModified lst =
         let fun enc g =
                 case g of
-                    x::[] => S x
+                    [] => raise Fail "Empty list cannot be encoded"
+                  | x::[] => S x
                   | x::xs => M (length g, x)
         in
             map enc (pack lst)
@@ -135,7 +136,13 @@ struct
         end;
 
     (* 20 - Remove the K'th element from a list. *)
-    fun removeAt n xs = take (n-1) xs @ drop n xs;
+    fun removeAt n xs =
+        let val left = take (n-1) xs
+            val right = drop (n-1) xs
+            val elem = hd right
+        in
+            (elem, left @ drop 1 right)
+        end;
 
     (* 21 - Insert an element at a given position into a list. *)
     fun insertAt elem n xs = take (n-1) xs @ (elem :: drop (n-1) xs);
@@ -145,5 +152,17 @@ struct
         if a > b
         then []
         else a :: range (a+1) b;
+
+    (* 23 - Extract a given number of randomly selected elements from a list. *)
+    fun rndSelect n xs =
+        case n of
+            0 => []
+          | i => let val gen = Random.newgen()
+                     val rnd = Random.range (0, length xs) gen
+                     val (elem, xs') = removeAt rnd xs
+                 in
+                     elem :: rndSelect (n-1) xs'
+                 end;
+                            
   end
 end

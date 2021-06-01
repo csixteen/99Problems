@@ -1,7 +1,10 @@
 Library
   structure Lists
+  structure Random
 is
   $/basis.cm
   $/smlnj-lib.cm
 
   src/lists.sml
+  lib/github.com/diku-dk/sml-random/RANDOM.sig
+  lib/github.com/diku-dk/sml-random/Random.sml
