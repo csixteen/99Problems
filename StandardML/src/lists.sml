@@ -136,5 +136,8 @@ struct
 
     (* 20 - Remove the K'th element from a list. *)
     fun removeAt n xs = take (n-1) xs @ drop n xs;
+
+    (* 21 - Insert an element at a given position into a list. *)
+    fun insertAt elem n xs = take (n-1) xs @ (elem :: drop (n-1) xs);
   end
 end
