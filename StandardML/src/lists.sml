@@ -139,5 +139,11 @@ struct
 
     (* 21 - Insert an element at a given position into a list. *)
     fun insertAt elem n xs = take (n-1) xs @ (elem :: drop (n-1) xs);
+
+    (* 22 - Create a list containing all integers within a given range. *)
+    fun range a b =
+        if a > b
+        then []
+        else a :: range (a+1) b;
   end
 end
