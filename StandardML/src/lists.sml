@@ -162,6 +162,9 @@ struct
                  in
                      elem :: rndSelect (n-1) xs'
                  end;
+
+    (* 24 - Lotto: Draw N different random numbers from the set 1..M. *)
+    fun lottoSelect n m = rndSelect n (range 1 m);
                             
   end
 end
