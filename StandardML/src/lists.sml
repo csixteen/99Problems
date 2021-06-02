@@ -157,9 +157,8 @@ struct
     fun rndSelect n xs =
         case n of
             0 => []
-          | i => let val gen = Random.newgen()
-                     val rnd = Random.range (0, length xs) gen
-                     val (elem, xs') = removeAt rnd xs
+          | i => let val rnd = Random.range (0, length xs) (Random.newgen ())
+                     val (elem, xs') = removeAt (rnd+1) xs
                  in
                      elem :: rndSelect (n-1) xs'
                  end;
