@@ -122,7 +122,7 @@ struct
       | dropEvery n xs = take (n-1) xs @ dropEvery n (drop n xs);
 
     (* 17 - Split a list into two parts; the length of the first part is given. *)
-    fun splitAt n xs = [take n xs, drop n xs];
+    fun splitAt n xs = (take n xs, drop n xs);
 
     (* 18 - Extract a slice from a list. *)
     fun slice lo hi xs = take (hi-lo+1) !> drop (lo-1) xs;
@@ -130,7 +130,7 @@ struct
     (* 19 - Rotate a list N places to the left. *)
     fun rotate n xs =
         let
-            val [left, right] = splitAt n xs
+            val (left, right) = splitAt n xs
         in
             right @ left
         end;
@@ -165,6 +165,16 @@ struct
 
     (* 24 - Lotto: Draw N different random numbers from the set 1..M. *)
     fun lottoSelect n m = rndSelect n (range 1 m);
-                            
+
+    (* 25 - Generate a random permutation of the elements of a list. *)
+    fun rndPermutation lst =
+        case lst of
+            [] => []
+          | x::xs => let val rest = rndPermutation xs
+                         val pos = Random.range (0, length rest) (Random.newgen ()) handle Fail _ => 0
+                         val (left, right) = splitAt pos rest
+                     in
+                         left @ (x :: right)
+                     end;
   end
 end
